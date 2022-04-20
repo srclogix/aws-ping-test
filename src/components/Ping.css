@@ -1,0 +1,97 @@
+.region-test {
+    margin-top: 40px;
+}
+
+.region-test .d-flex {
+    justify-content: space-between;
+}
+
+.refresh-icon {
+    margin-right: 35px;
+    border: 1px solid #ccc;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    line-height: 28px;
+    cursor: pointer;
+    position: relative;
+}
+
+.refresh-icon:hover .tooltiptext {
+    visibility: visible;
+    bottom: -42px;
+    left: 7px;
+}
+
+.green-border {
+    border: 1px solid #6AA84F;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    position: relative;
+}
+
+.number {
+    border: 1px solid #000;
+    width: 23px;
+    height: 23px;
+    display: inline-block;
+    text-align: center;
+    border-radius: 50%;
+}
+
+.region-sec {
+    display: flex;
+    justify-content: center;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    margin-top: 26px;
+    align-items: center;
+}
+
+.region-name {
+    margin-left: 15px;
+}
+
+.region-img img {
+    width: 32x;
+    height: 32px;
+}
+
+.latency span {
+    display: block;
+    font-size: 45px;
+    font-weight: bold;
+    line-height: 53px;
+    color: #6AA84F
+}
+
+.count-no {
+    position: absolute;
+    right: 15px;
+    bottom: 22px;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 12px;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 99;
+    border: 1px solid #eee;
+}
+
+.recomend {
+    position: relative;
+}
+
+.recomend svg {
+    width: 100px;
+    position: absolute;
+    bottom: -25px;
+    right: 0;
+}
