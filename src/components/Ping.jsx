@@ -15,8 +15,6 @@ const AWS_REGIONS = {
     "ap-northeast-1": "ec2.ap-northeast-1.amazonaws.com",
     "ap-southeast-2": "ec2.ap-southeast-2.amazonaws.com"
 };
-const PING_INTERVAL = 10;
-
 const regionsMap = {
     "us-east-1": "US East (N. Virginia) (us-east-1)",
     "us-east-2": "US East (Ohio) (us-east-2)",
@@ -37,102 +35,163 @@ const regionsMap = {
     "eu-north-1": "Europe (Stockholm) (eu-north-1)",
     "sa-east-1": "South America (São Paulo) (sa-east-1)"
 };
+const TOTAL_PINGS = 10;
+const TOTAL_REGIONS = 18;
 
 const Ping = () => {
-    const [pingResults, setPingResults] = useState({});
-    const [latencyResults, setLatencyResults] = useState({});
+    const [pingResults, setPingResults] = useState();
+    const [isReady, setIsReady] = useState(false);
+    const [isFinished, setIsFinished] = useState(false);
+    const [recommendedRegion, setRecommendedRegion] = useState();
 
-    const addPingResult = (url, time) => {
-        setPingResults(pingResults => {
-            const newPingResults = { ...pingResults };
+    const initPingRegions = () => {
+        const regions = Object.entries(regionsMap);
 
-            if (newPingResults[url])
-                newPingResults[url].push(time);
-            else
-                newPingResults[url] = [time];
+        const awsPingMap = regions.map(region => {
+            const regionMap = {
+                codename: '',
+                name: '',
+                url: '',
+                pings: [],
+                latency: ''
+            };
 
-            return newPingResults;
-        });
+            regionMap.codename = region[0];
+            regionMap.name = region[1];
+            regionMap.url = AWS_REGIONS[region[0]];
+
+            return regionMap;
+        })
+
+        setPingResults(awsPingMap);
     }
 
-    const checkLatency = (url) => {
-        ping(url).then(function (delta) {
-            // console.log('Ping time was ' + String(delta) + ' => ' + url);
-            addPingResult(url, delta);
-        }).catch(function (err) {
-            console.error('Could not ping remote URL', err);
-        });
+    const checkAvgLatency = (list) => {
+        return Math.round(list.reduce((sum, num) => sum + num, 0) / list.length);
     }
 
-    const cloudPingTest = (list) => {
-        list.map(url => {
-            checkLatency(url);
+    const addPingResult = (index, time) => {
+        const newPingResults = [...pingResults];
+        const newRegionMap = newPingResults[index];
+
+        newRegionMap.pings.push(time);
+        newRegionMap.latency = time && checkAvgLatency(newRegionMap.pings);
+
+        setPingResults(newPingResults);
+    }
+
+    const checkLatency = (index) => {
+        const { url } = pingResults[index];
+
+        if (url)
+            ping(url).then(function (delta) {
+                // console.log('Ping time was ' + String(delta) + ' => ' + url);
+                addPingResult(index, delta);
+            }).catch(function (err) {
+                console.error('Could not ping remote URL', err);
+            });
+        else
+            addPingResult(index, null);
+    }
+
+    const cloudPingTest = () => {
+        pingResults.map((region, index) => {
+            checkLatency(index);
         })
     }
 
-    const startPingTest = (times) => {
-        const pingRegions = Object.values(AWS_REGIONS);
-
+    const startPinging = (times) => {
         for (let i = 0; i < times; i++)
-            cloudPingTest(pingRegions)
+            cloudPingTest();
     }
 
-    const calculateLatency = () => {
-
+    const startPingTest = () => {
+        setIsReady(false);
+        setIsFinished(false);
+        setRecommendedRegion();
+        initPingRegions();
     }
 
     useEffect(() => {
-        const results = Object.values(pingResults);
+        startPingTest();
+    }, [])
 
-        if (results.every(item => item.length == PING_INTERVAL))
-            calculateLatency();
+    useEffect(() => {
+        console.log('aanni', pingResults);
+
+        if (pingResults?.length === TOTAL_REGIONS)
+            setIsReady(true);
+        if (pingResults?.every(region => region.pings.length === TOTAL_PINGS))
+            setIsFinished(true);
     }, [pingResults])
 
     useEffect(() => {
-        startPingTest(PING_INTERVAL);
-    }, [])
+        if (isReady)
+            startPinging(TOTAL_PINGS);
+    }, [isReady])
+
+
+    const calculateRecommendRegion = () => {
+        const latencies = pingResults.map(region => region.latency).filter(latency => latency);
+        const minLatency = Math.min(...latencies);
+        const minLatencyIndex = pingResults.findIndex(region => region.latency == minLatency);
+
+        setRecommendedRegion(minLatencyIndex);
+
+        return minLatencyIndex;
+    }
+
+    useEffect(() => {
+        if (isFinished)
+            calculateRecommendRegion();
+    }, [isFinished])
 
     return (
         <div className='region-test'>
             <div className='d-flex'>
                 <h4 className='header-title icon-heading-w'>Media Region Test</h4>
-                <div className='refresh-icon'>
-                    <img src='../images/Refresh_icon.png' alt='' />
+                <div className='refresh-icon' onClick={startPingTest}>
+                    <img src='images/Refresh_icon.png' alt='' />
                     <span className='tooltiptext'>Refresh</span>
                 </div>
             </div>
             <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
             <div className='row m-t-20'>
                 {
-                    Object.values(regionsMap).map((region, index) =>
+                    pingResults?.map((region, index) =>
                         <div className='col-md-4' key={nanoid()}>
                             <div className='green-border'>
                                 <span className='number'>
                                     {index + 1}
                                 </span>
-                                <div className='recomend'>
-                                    {/* <Recommended /> */}
-                                </div>
+                                {
+                                    recommendedRegion === index &&
+                                    <div className='recomend'>
+                                        <img src='images/recommended.svg' />
+                                        {/* <Recommended /> */}
+                                    </div>
+                                }
                                 <div className='region-sec'>
                                     <div className='region-img'>
                                         <img src='../images/flag-round-250.png' alt='' />
                                     </div>
                                     <div className='region-name'>
-                                        {region}
+                                        {region.name}
                                     </div>
                                 </div>
                                 <div className='latency'>
                                     Latency(in ms)
-                                    <span>225
+                                    <span>
+                                        {region.latency || 'Unreachable'}
                                     </span>
                                 </div>
-                                <span className='count-no'>{PING_INTERVAL}</span>
+                                <span className='count-no'>{region.pings.length}</span>
                             </div>
                         </div>
                     )
                 }
             </div>
-        </div>
+        </div >
     )
 }
 
