@@ -13,7 +13,17 @@ const AWS_REGIONS = {
     "eu-central-1": "ec2.eu-central-1.amazonaws.com",
     "eu-west-1": "ec2.eu-west-1.amazonaws.com",
     "ap-northeast-1": "ec2.ap-northeast-1.amazonaws.com",
-    "ap-southeast-2": "ec2.ap-southeast-2.amazonaws.com"
+    "ap-southeast-2": "ec2.ap-southeast-2.amazonaws.com",
+    "us-east-2": "ec2.us-east-2.amazonaws.com",
+    "af-south-1": "ec2.af-south-1.amazonaws.com",
+    "ap-east-1": "ec2.ap-east-1.amazonaws.com",
+    "ca-central-1": "ec2.ca-central-1.amazonaws.com",
+    "eu-west-2": "ec2.eu-west-2.amazonaws.com",
+    "eu-south-1": "ec2.eu-south-1.amazonaws.com",
+    "eu-west-3": "ec2.eu-west-3.amazonaws.com",
+    "eu-north-1": "ec2.eu-north-1.amazonaws.com",
+    "ap-south-1": "ec2.ap-south-1.amazonaws.com",
+    "ap-northeast-2": "ec2.ap-northeast-2.amazonaws.com"
 };
 const regionsMap = {
     "us-east-1": "US East (N. Virginia) (us-east-1)",
@@ -129,7 +139,6 @@ const Ping = () => {
         if (isReady)
             startPinging(TOTAL_PINGS);
     }, [isReady])
-
 
     const calculateRecommendRegion = () => {
         const latencies = pingResults.map(region => region.latency).filter(latency => latency);
