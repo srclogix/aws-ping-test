@@ -1,5 +1,18 @@
+.org-media-region {
+    justify-content: space-between;
+}
+
 .region-test {
     margin-top: 40px;
+    border-top: 1px solid #eee;
+    padding-top: 29px;
+}
+
+.region-test p {
+    font-weight: normal;
+    margin-top: 17px;
+    font-size: 15px;
+    margin-bottom: 0;
 }
 
 .region-test .d-flex {
@@ -7,29 +20,58 @@
 }
 
 .refresh-icon {
-    margin-right: 35px;
-    border: 1px solid #ccc;
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    text-align: center;
-    line-height: 28px;
     cursor: pointer;
     position: relative;
+    transition: 0.5s;
+
 }
+
+.refresh-icon:hover {
+    transform: scale(1.1);
+}
+
+.refresh-icon svg {
+    height: 40px;
+    transition: 0.5s;
+    animation-name: spin;
+    animation-duration: 400ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+}
+
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
 
 .refresh-icon:hover .tooltiptext {
     visibility: visible;
-    bottom: -42px;
+    bottom: 0;
     left: 7px;
 }
 
+.refresh-icon:hover .tooltiptext:after {
+    left: 39px;
+}
+
 .green-border {
-    border: 1px solid #6AA84F;
+    border: 1px solid #6aa84f;
     padding: 10px;
     border-radius: 5px;
     text-align: center;
     position: relative;
+    margin-bottom: 15px;
+}
+
+.gray-border {
+    border: 1px solid #ccc
 }
 
 .number {
@@ -66,7 +108,7 @@
     font-size: 45px;
     font-weight: bold;
     line-height: 53px;
-    color: #6AA84F
+    color: #6aa84f
 }
 
 .count-no {
@@ -94,4 +136,12 @@
     position: absolute;
     bottom: -25px;
     right: 0;
+}
+
+.latency .orange {
+    color: #e69138;
+}
+
+.latency .red {
+    color: #ff0000;
 }
