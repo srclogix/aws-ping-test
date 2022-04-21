@@ -1,6 +1,8 @@
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import './Ping.css';
+
+// import Restore from '../../public/images/restore.svg';
 const ping = require('web-pingjs');
 
 // Define the regions to check.
@@ -150,13 +152,14 @@ const Ping = () => {
     return (
         <div className='region-test'>
             <div className='d-flex'>
-                <h4 className='header-title icon-heading-w'>Media Region Test</h4>
+                <h4 className='header-title'>Media Region Test
+                    <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
+                </h4>
                 <div className='refresh-icon' onClick={startPingTest}>
-                    <img src='images/Refresh_icon.png' alt='' />
+                    {/* <Restore /> */}
                     <span className='tooltiptext'>Refresh</span>
                 </div>
             </div>
-            <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
             <div className='row m-t-20'>
                 {
                     pingResults?.map((region, index) =>
@@ -189,10 +192,169 @@ const Ping = () => {
                                 <span className='count-no'>{region.pings.length}</span>
                             </div>
                         </div>
+
+
                     )
                 }
             </div>
-        </div >
+            {/* <div className='region-test'>
+                <div className='d-flex'>
+                    <h4 className='header-title'>Media Region Test
+                        <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
+                    </h4>
+                    <div className='refresh-icon'>
+                        <Restore />
+                        <span className='tooltiptext'>Refresh</span>
+                    </div>
+                </div>
+
+                <div className='row m-t-20'>
+                    <div className='col-md-4'>
+                        <div className='green-border'>
+                            <span className='number'>
+                                1
+                            </span>
+                            <div className='recomend'>
+                                <Recommended />
+                            </div>
+                            <div className='region-sec'>
+                                <div className='region-img'>
+                                    <img src='../images/flag-round-250.png' alt='' />
+                                </div>
+                                <div className='region-name'>
+                                    US East: N. Virginia
+                                    us-east-1
+                                </div>
+                            </div>
+                            <div className='latency'>
+                                Latency(in ms)
+                                <span>225
+                                </span>
+                            </div>
+                            <span className='count-no'>10</span>
+                        </div>
+                    </div>
+                    <div className='col-md-4'>
+                        <div className='green-border gray-border'>
+                            <span className='number'>
+                                2
+                            </span>
+                            <div className='region-sec'>
+                                <div className='region-img'>
+                                    <img src='../images/flag-round-250.png' alt='' />
+                                </div>
+                                <div className='region-name'>
+                                    US East: Ohio
+                                    us-east-2
+                                </div>
+                            </div>
+                            <div className='latency'>
+                                Latency(in ms)
+                                <span>478
+                                </span>
+                            </div>
+                            <span className='count-no'>10</span>
+                        </div>
+                    </div>
+                    <div className='col-md-4'>
+                        <div className='green-border gray-border'>
+                            <span className='number'>
+                                3
+                            </span>
+                            <div className='region-sec'>
+                                <div className='region-img'>
+                                    <img src='../images/flag-round-250.png' alt='' />
+                                </div>
+                                <div className='region-name'>
+                                    Europe: Milan
+                                    eu-south-1
+
+                                </div>
+                            </div>
+                            <div className='latency'>
+                                Latency(in ms)
+                                <span className='orange'>625
+                                </span>
+                            </div>
+                            <span className='count-no'>10</span>
+                        </div>
+                    </div>
+                    <div className='col-md-4'>
+                        <div className='green-border gray-border'>
+                            <span className='number'>
+                                4
+                            </span>
+
+                            <div className='region-sec'>
+                                <div className='region-img'>
+                                    <img src='../images/flag-round-250.png' alt='' />
+                                </div>
+                                <div className='region-name'>
+                                    Asia Pacific: Seoul
+                                    ap-northeast-2
+
+                                </div>
+                            </div>
+                            <div className='latency'>
+                                Latency(in ms)
+                                <span className='orange'>686
+                                </span>
+                            </div>
+                            <span className='count-no'>10</span>
+                        </div>
+                    </div>
+                    <div className='col-md-4'>
+                        <div className='green-border gray-border'>
+                            <span className='number'>
+                                5
+                            </span>
+
+                            <div className='region-sec'>
+                                <div className='region-img'>
+                                    <img src='../images/flag-round-250.png' alt='' />
+                                </div>
+                                <div className='region-name'>
+                                    Asia Pacific: Mumbai
+                                    ap-south-1
+
+                                </div>
+                            </div>
+                            <div className='latency'>
+                                Latency(in ms)
+                                <span className='red'>725
+                                </span>
+                            </div>
+                            <span className='count-no'>10</span>
+                        </div>
+                    </div>
+                    <div className='col-md-4'>
+                        <div className='green-border gray-border'>
+                            <span className='number'>
+                                6
+                            </span>
+
+                            <div className='region-sec'>
+                                <div className='region-img'>
+                                    <img src='../images/flag-round-250.png' alt='' />
+                                </div>
+                                <div className='region-name'>
+                                    Africa: Cape Town
+                                    af-south-1
+                                </div>
+                            </div>
+                            <div className='latency'>
+                                Latency(in ms)
+                                <span className='red'>1625
+                                </span>
+                            </div>
+                            <span className='count-no'>10</span>
+                        </div>
+                    </div>
+                </div>
+            </div> */}
+        </div>
+
+
     )
 }
 
