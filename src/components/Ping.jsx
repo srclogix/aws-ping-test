@@ -59,21 +59,13 @@ const Ping = () => {
     const initPingRegions = () => {
         const regions = Object.entries(regionsMap);
 
-        const awsPingMap = regions.map(region => {
-            const regionMap = {
-                codename: '',
-                name: '',
-                url: '',
-                pings: [],
-                latency: ''
-            };
-
-            regionMap.codename = region[0];
-            regionMap.name = region[1];
-            regionMap.url = AWS_REGIONS[region[0]];
-
-            return regionMap;
-        })
+        const awsPingMap = regions.map(region => ({
+            codename: region[0],
+            name: region[1],
+            url: AWS_REGIONS[region[0]],
+            pings: [],
+            latency: ''
+        }))
 
         setPingResults(awsPingMap);
     }
@@ -96,8 +88,8 @@ const Ping = () => {
         const { url } = pingResults[index];
 
         if (url)
-            ping(url).then(function (delta) {
-                // console.log('Ping time was ' + String(delta) + ' => ' + url);
+            return ping(url).then(function (delta) {
+                console.log('Ping time was ' + String(delta) + 'ms => ' + url);
                 addPingResult(index, delta);
             }).catch(function (err) {
                 console.error('Could not ping remote URL', err);
@@ -106,15 +98,17 @@ const Ping = () => {
             addPingResult(index, null);
     }
 
-    const cloudPingTest = () => {
-        pingResults.map((region, index) => {
-            checkLatency(index);
-        })
+    const cloudPingTest = async () => {
+        const pingRequests = pingResults.map((region, index) => checkLatency(index));
+
+        return await Promise.all(pingRequests);
     }
 
-    const startPinging = (times) => {
-        for (let i = 0; i < times; i++)
-            cloudPingTest();
+    const startPinging = async (times) => {
+        for (let i = 0; i < times; i++) {
+            console.log('Ping test =>', i + 1)
+            await cloudPingTest();
+        }
     }
 
     const startPingTest = () => {
@@ -157,6 +151,17 @@ const Ping = () => {
             calculateRecommendRegion();
     }, [isFinished])
 
+    const getLatencyStyle = (time) => {
+        switch (time) {
+            case time > 700:
+                return 'red';
+            case time >= 500 && time <= 700:
+                return 'orange';
+            default:
+                return '';
+        }
+    }
+
     return (
         <div className='container'>
             <div className='region-test'>
@@ -165,6 +170,7 @@ const Ping = () => {
                         <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
                     </h4>
                     <div className='refresh-icon' onClick={startPingTest}>
+                        <img src='images/restore.svg' />
                         {/* <Restore /> */}
                         <span className='tooltiptext'>Refresh</span>
                     </div>
@@ -173,7 +179,7 @@ const Ping = () => {
                     {
                         pingResults?.map((region, index) =>
                             <div className='col-md-4' key={nanoid()}>
-                                <div className='green-border'>
+                                <div className={`green-border ${recommendedRegion === index ? "" : "gray-border"}`}>
                                     <span className='number'>
                                         {index + 1}
                                     </span>
@@ -186,7 +192,7 @@ const Ping = () => {
                                     }
                                     <div className='region-sec'>
                                         <div className='region-img'>
-                                            <img src='../images/flag-round-250.png' alt='' />
+                                            <img src='images/flag-round-250.png' alt='' />
                                         </div>
                                         <div className='region-name'>
                                             {region.name}
@@ -194,176 +200,18 @@ const Ping = () => {
                                     </div>
                                     <div className='latency'>
                                         Latency(in ms)
-                                        <span>
+                                        <span className={getLatencyStyle(region.latency)}>
                                             {region.latency || 'Unreachable'}
                                         </span>
                                     </div>
                                     <span className='count-no'>{region.pings.length}</span>
                                 </div>
                             </div>
-
-
                         )
                     }
                 </div>
-                {/* <div className='region-test'>
-                <div className='d-flex'>
-                    <h4 className='header-title'>Media Region Test
-                        <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
-                    </h4>
-                    <div className='refresh-icon'>
-                        <Restore />
-                        <span className='tooltiptext'>Refresh</span>
-                    </div>
-                </div>
-
-                <div className='row m-t-20'>
-                    <div className='col-md-4'>
-                        <div className='green-border'>
-                            <span className='number'>
-                                1
-                            </span>
-                            <div className='recomend'>
-                                <Recommended />
-                            </div>
-                            <div className='region-sec'>
-                                <div className='region-img'>
-                                    <img src='../images/flag-round-250.png' alt='' />
-                                </div>
-                                <div className='region-name'>
-                                    US East: N. Virginia
-                                    us-east-1
-                                </div>
-                            </div>
-                            <div className='latency'>
-                                Latency(in ms)
-                                <span>225
-                                </span>
-                            </div>
-                            <span className='count-no'>10</span>
-                        </div>
-                    </div>
-                    <div className='col-md-4'>
-                        <div className='green-border gray-border'>
-                            <span className='number'>
-                                2
-                            </span>
-                            <div className='region-sec'>
-                                <div className='region-img'>
-                                    <img src='../images/flag-round-250.png' alt='' />
-                                </div>
-                                <div className='region-name'>
-                                    US East: Ohio
-                                    us-east-2
-                                </div>
-                            </div>
-                            <div className='latency'>
-                                Latency(in ms)
-                                <span>478
-                                </span>
-                            </div>
-                            <span className='count-no'>10</span>
-                        </div>
-                    </div>
-                    <div className='col-md-4'>
-                        <div className='green-border gray-border'>
-                            <span className='number'>
-                                3
-                            </span>
-                            <div className='region-sec'>
-                                <div className='region-img'>
-                                    <img src='../images/flag-round-250.png' alt='' />
-                                </div>
-                                <div className='region-name'>
-                                    Europe: Milan
-                                    eu-south-1
-
-                                </div>
-                            </div>
-                            <div className='latency'>
-                                Latency(in ms)
-                                <span className='orange'>625
-                                </span>
-                            </div>
-                            <span className='count-no'>10</span>
-                        </div>
-                    </div>
-                    <div className='col-md-4'>
-                        <div className='green-border gray-border'>
-                            <span className='number'>
-                                4
-                            </span>
-
-                            <div className='region-sec'>
-                                <div className='region-img'>
-                                    <img src='../images/flag-round-250.png' alt='' />
-                                </div>
-                                <div className='region-name'>
-                                    Asia Pacific: Seoul
-                                    ap-northeast-2
-
-                                </div>
-                            </div>
-                            <div className='latency'>
-                                Latency(in ms)
-                                <span className='orange'>686
-                                </span>
-                            </div>
-                            <span className='count-no'>10</span>
-                        </div>
-                    </div>
-                    <div className='col-md-4'>
-                        <div className='green-border gray-border'>
-                            <span className='number'>
-                                5
-                            </span>
-
-                            <div className='region-sec'>
-                                <div className='region-img'>
-                                    <img src='../images/flag-round-250.png' alt='' />
-                                </div>
-                                <div className='region-name'>
-                                    Asia Pacific: Mumbai
-                                    ap-south-1
-
-                                </div>
-                            </div>
-                            <div className='latency'>
-                                Latency(in ms)
-                                <span className='red'>725
-                                </span>
-                            </div>
-                            <span className='count-no'>10</span>
-                        </div>
-                    </div>
-                    <div className='col-md-4'>
-                        <div className='green-border gray-border'>
-                            <span className='number'>
-                                6
-                            </span>
-
-                            <div className='region-sec'>
-                                <div className='region-img'>
-                                    <img src='../images/flag-round-250.png' alt='' />
-                                </div>
-                                <div className='region-name'>
-                                    Africa: Cape Town
-                                    af-south-1
-                                </div>
-                            </div>
-                            <div className='latency'>
-                                Latency(in ms)
-                                <span className='red'>1625
-                                </span>
-                            </div>
-                            <span className='count-no'>10</span>
-                        </div>
-                    </div>
-                </div>
-            </div> */}
             </div>
         </div>
-
     )
 }
 

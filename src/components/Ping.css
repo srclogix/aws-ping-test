@@ -108,16 +108,40 @@ body {
     }
 }
 
+.tooltiptext {
+    visibility: hidden;
+    width: auto;
+    background-color: #000;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 3px 10px;
+    position: absolute;
+    z-index: 99999 !important;
+    left: -28px;
+    margin-left: 0;
+    font-size: 12px;
+    bottom: -24px;
+    white-space: nowrap;
+}
 
+.tooltiptext:after {
+    content: "";
+    position: absolute;
+    bottom: 100%;
+    left: 35px;
+    margin-left: 0;
+    border: 5px solid transparent;
+    border-bottom-color: #000;
+    right: 35px;
+}
 
 .refresh-icon:hover .tooltiptext {
     visibility: visible;
-    bottom: 0;
-    left: 7px;
 }
 
 .refresh-icon:hover .tooltiptext:after {
-    left: 39px;
+    left: 43px;
 }
 
 .green-border {
