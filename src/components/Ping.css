@@ -159,11 +159,12 @@ body {
 
 .number {
     border: 1px solid #000;
-    width: 23px;
-    height: 23px;
+    width: 30px;
+    height: 30px;
     display: inline-block;
     text-align: center;
     border-radius: 50%;
+    line-height: 30px;
 }
 
 .region-sec {
