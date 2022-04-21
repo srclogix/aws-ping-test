@@ -57,21 +57,13 @@ const Ping = () => {
     const initPingRegions = () => {
         const regions = Object.entries(regionsMap);
 
-        const awsPingMap = regions.map(region => {
-            const regionMap = {
-                codename: '',
-                name: '',
-                url: '',
-                pings: [],
-                latency: ''
-            };
-
-            regionMap.codename = region[0];
-            regionMap.name = region[1];
-            regionMap.url = AWS_REGIONS[region[0]];
-
-            return regionMap;
-        })
+        const awsPingMap = regions.map(region => ({
+            codename: region[0],
+            name: region[1],
+            url: AWS_REGIONS[region[0]],
+            pings: [],
+            latency: ''
+        }))
 
         setPingResults(awsPingMap);
     }
@@ -95,7 +87,7 @@ const Ping = () => {
 
         if (url)
             ping(url).then(function (delta) {
-                // console.log('Ping time was ' + String(delta) + ' => ' + url);
+                console.log('Ping time was ' + String(delta) + ' => ' + url);
                 addPingResult(index, delta);
             }).catch(function (err) {
                 console.error('Could not ping remote URL', err);
