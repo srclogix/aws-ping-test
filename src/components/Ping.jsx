@@ -50,6 +50,56 @@ const regionsMap = {
 const TOTAL_PINGS = 10;
 const TOTAL_REGIONS = 18;
 
+const getRegionFlags = (regionCode) => {
+    switch (regionCode) {
+        case "us-east-1":
+        case "us-east-2":
+        case "us-west-1":
+        case "us-west-2":
+            return "united-states";
+        case "af-south-1":
+            return "south-africa";
+        case "ap-south-1":
+            return "india";
+        case "ap-northeast-2":
+            return "south-korea";
+        case "ap-southeast-1":
+            return "";
+        case "ap-southeast-2":
+            return "";
+        case "ap-northeast-1":
+            return "";
+        case "ca-central-1":
+            return "";
+        case "eu-central-1":
+        case "eu-west-1":
+        case "eu-west-2":
+        case "eu-south-1":
+        case "eu-west-3":
+        case "eu-north-1":
+            return "italy";
+        case "sa-east-1":
+            return "";
+        default:
+            return "";
+    }
+}
+
+const getLatencyStyle = (time) => {
+    switch (time) {
+        case time > 700:
+            return 'red';
+        case time >= 500 && time <= 700:
+            return 'orange';
+        default:
+            return '';
+    }
+}
+
+const checkAvgLatency = (list) => {
+    return Math.round(list.reduce((sum, num) => sum + num, 0) / list.length);
+}
+
 const Ping = () => {
     const [pingResults, setPingResults] = useState();
     const [isReady, setIsReady] = useState(false);
@@ -68,10 +118,6 @@ const Ping = () => {
         }))
 
         setPingResults(awsPingMap);
-    }
-
-    const checkAvgLatency = (list) => {
-        return Math.round(list.reduce((sum, num) => sum + num, 0) / list.length);
     }
 
     const addPingResult = (index, time) => {
@@ -151,17 +197,6 @@ const Ping = () => {
             calculateRecommendRegion();
     }, [isFinished])
 
-    const getLatencyStyle = (time) => {
-        switch (time) {
-            case time > 700:
-                return 'red';
-            case time >= 500 && time <= 700:
-                return 'orange';
-            default:
-                return '';
-        }
-    }
-
     return (
         <div className='container'>
             <div className='region-test'>
@@ -169,11 +204,14 @@ const Ping = () => {
                     <h4 className='header-title'>Media Region Test
                         <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
                     </h4>
-                    <div className='refresh-icon' onClick={startPingTest}>
-                        <img src='images/restore.svg' />
-                        {/* <Restore /> */}
-                        <span className='tooltiptext'>Refresh</span>
-                    </div>
+                    {
+                        isFinished &&
+                        <div className='refresh-icon' onClick={startPingTest}>
+                            <img src='images/restore.svg' />
+                            {/* <Restore /> */}
+                            <span className='tooltiptext'>Refresh</span>
+                        </div>
+                    }
                 </div>
                 <div className='row m-t-20'>
                     {
@@ -192,7 +230,7 @@ const Ping = () => {
                                     }
                                     <div className='region-sec'>
                                         <div className='region-img'>
-                                            <img src='images/flag-round-250.png' alt='' />
+                                            <img src={`images/flags/${getRegionFlags(region.codename)}.png`} alt='' />
                                         </div>
                                         <div className='region-name'>
                                             {region.name}
@@ -201,7 +239,7 @@ const Ping = () => {
                                     <div className='latency'>
                                         Latency(in ms)
                                         <span className={getLatencyStyle(region.latency)}>
-                                            {region.latency || 'Unreachable'}
+                                            {region.latency || 'NAN'}
                                         </span>
                                     </div>
                                     <span className='count-no'>{region.pings.length}</span>
