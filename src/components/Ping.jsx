@@ -88,7 +88,7 @@ const Ping = () => {
         const { url } = pingResults[index];
 
         if (url)
-            ping(url).then(function (delta) {
+            return ping(url).then(function (delta) {
                 console.log('Ping time was ' + String(delta) + ' => ' + url);
                 addPingResult(index, delta);
             }).catch(function (err) {
@@ -98,15 +98,16 @@ const Ping = () => {
             addPingResult(index, null);
     }
 
-    const cloudPingTest = () => {
-        pingResults.map((region, index) => {
-            checkLatency(index);
-        })
+    const cloudPingTest = async () => {
+        const pingRequests = pingResults.map((region, index) => checkLatency(index));
+
+        return await Promise.all(pingRequests);
     }
 
-    const startPinging = (times) => {
-        for (let i = 0; i < times; i++)
-            cloudPingTest();
+    const startPinging = async (times) => {
+        for (let i = 0; i < times; i++) {
+            await cloudPingTest();
+        }
     }
 
     const startPingTest = () => {
@@ -156,6 +157,7 @@ const Ping = () => {
                     <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
                 </h4>
                 <div className='refresh-icon' onClick={startPingTest}>
+                    <img src='images/restore.svg' />
                     {/* <Restore /> */}
                     <span className='tooltiptext'>Refresh</span>
                 </div>
@@ -164,7 +166,7 @@ const Ping = () => {
                 {
                     pingResults?.map((region, index) =>
                         <div className='col-md-4' key={nanoid()}>
-                            <div className='green-border'>
+                            <div className={`green-border ${recommendedRegion === index ? "" : "gray-border"}`}>
                                 <span className='number'>
                                     {index + 1}
                                 </span>
@@ -177,7 +179,7 @@ const Ping = () => {
                                 }
                                 <div className='region-sec'>
                                     <div className='region-img'>
-                                        <img src='../images/flag-round-250.png' alt='' />
+                                        <img src='images/flag-round-250.png' alt='' />
                                     </div>
                                     <div className='region-name'>
                                         {region.name}
