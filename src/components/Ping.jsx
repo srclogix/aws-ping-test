@@ -158,54 +158,55 @@ const Ping = () => {
     }, [isFinished])
 
     return (
-        <div className='region-test'>
-            <div className='d-flex'>
-                <h4 className='header-title'>Media Region Test
-                    <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
-                </h4>
-                <div className='refresh-icon' onClick={startPingTest}>
-                    {/* <Restore /> */}
-                    <span className='tooltiptext'>Refresh</span>
+        <div className='container'>
+            <div className='region-test'>
+                <div className='d-flex'>
+                    <h4 className='header-title'>Media Region Test
+                        <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
+                    </h4>
+                    <div className='refresh-icon' onClick={startPingTest}>
+                        {/* <Restore /> */}
+                        <span className='tooltiptext'>Refresh</span>
+                    </div>
                 </div>
-            </div>
-            <div className='row m-t-20'>
-                {
-                    pingResults?.map((region, index) =>
-                        <div className='col-md-4' key={nanoid()}>
-                            <div className='green-border'>
-                                <span className='number'>
-                                    {index + 1}
-                                </span>
-                                {
-                                    recommendedRegion === index &&
-                                    <div className='recomend'>
-                                        <img src='images/recommended.svg' />
-                                        {/* <Recommended /> */}
-                                    </div>
-                                }
-                                <div className='region-sec'>
-                                    <div className='region-img'>
-                                        <img src='../images/flag-round-250.png' alt='' />
-                                    </div>
-                                    <div className='region-name'>
-                                        {region.name}
-                                    </div>
-                                </div>
-                                <div className='latency'>
-                                    Latency(in ms)
-                                    <span>
-                                        {region.latency || 'Unreachable'}
+                <div className='row m-t-20'>
+                    {
+                        pingResults?.map((region, index) =>
+                            <div className='col-md-4' key={nanoid()}>
+                                <div className='green-border'>
+                                    <span className='number'>
+                                        {index + 1}
                                     </span>
+                                    {
+                                        recommendedRegion === index &&
+                                        <div className='recomend'>
+                                            <img src='images/recommended.svg' />
+                                            {/* <Recommended /> */}
+                                        </div>
+                                    }
+                                    <div className='region-sec'>
+                                        <div className='region-img'>
+                                            <img src='../images/flag-round-250.png' alt='' />
+                                        </div>
+                                        <div className='region-name'>
+                                            {region.name}
+                                        </div>
+                                    </div>
+                                    <div className='latency'>
+                                        Latency(in ms)
+                                        <span>
+                                            {region.latency || 'Unreachable'}
+                                        </span>
+                                    </div>
+                                    <span className='count-no'>{region.pings.length}</span>
                                 </div>
-                                <span className='count-no'>{region.pings.length}</span>
                             </div>
-                        </div>
 
 
-                    )
-                }
-            </div>
-            {/* <div className='region-test'>
+                        )
+                    }
+                </div>
+                {/* <div className='region-test'>
                 <div className='d-flex'>
                     <h4 className='header-title'>Media Region Test
                         <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
@@ -360,8 +361,8 @@ const Ping = () => {
                     </div>
                 </div>
             </div> */}
+            </div>
         </div>
-
 
     )
 }
