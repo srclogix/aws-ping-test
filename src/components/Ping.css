@@ -1,7 +1,7 @@
 body {
     margin: 0;
     color: rgba(0, 0, 0, 0.87);
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
     font-weight: 400;
     font-size: 1rem;
     line-height: 1.5;
@@ -50,10 +50,10 @@ body {
 }
 
 .header-title {
-    font-size: 16px;
-    font-weight: 600;
-    line-height: 16px;
-    margin-bottom: 8px;
+    font-size: 34px;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #000;
     text-align: left;
 }
 
@@ -64,9 +64,8 @@ body {
 
 .region-test p {
     font-weight: normal;
-    margin-top: 17px;
-    font-size: 15px;
-    margin-bottom: 0;
+    font-size: 17px;
+    color: #000;
 }
 
 .region-test .row {
@@ -98,7 +97,7 @@ body {
     animation-timing-function: linear;
 }
 
-@keyframes spin {
+/* @keyframes spin {
     from {
         transform: rotate(0deg);
     }
@@ -106,7 +105,7 @@ body {
     to {
         transform: rotate(360deg);
     }
-}
+} */
 
 .tooltiptext {
     visibility: hidden;
@@ -151,20 +150,29 @@ body {
     text-align: center;
     position: relative;
     margin-bottom: 20px;
+    transition: 0.5s;
+}
+
+.gray-border:hover,
+.green-border:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .gray-border {
-    border: 1px solid #ccc
+    border: 1px solid #eee;
 }
 
 .number {
-    border: 1px solid #000;
-    width: 30px;
-    height: 30px;
+    width: 40px;
+    height: 40px;
     display: inline-block;
     text-align: center;
     border-radius: 50%;
-    line-height: 30px;
+    line-height: 40px;
+    box-shadow: inset 0px -1px 2px #797979;
+    font-weight: bold;
+    font-size: 16px;
 }
 
 .region-sec {
@@ -180,35 +188,46 @@ body {
 
 .region-name {
     margin-left: 15px;
+    font-weight: 600;
+    font-size: 14px;
+    color: #000;
 }
 
 .region-img img {
-    width: 32x;
+    width: 32px;
     height: 32px;
+}
+
+.latency {
+    color: #8a8a8a;
+    margin-bottom: 12px;
+    white-space: nowrap;
+    font-weight: bold;
+    line-height: normal;
 }
 
 .latency span {
     display: block;
-    font-size: 45px;
+    font-size: 50px;
     font-weight: bold;
-    line-height: 53px;
-    color: #6aa84f
+    line-height: 60px;
+    color: #6aa84f;
 }
 
 .count-no {
-    position: absolute;
-    right: 15px;
-    bottom: 22px;
+    width: 20px;
+    height: 20px;
     border-radius: 50%;
-    width: 25px;
-    height: 25px;
-    font-size: 12px;
-    font-weight: bold;
+    background: #f5f5f5;
     display: flex;
+    position: absolute;
+    right: 10px;
+    bottom: 22px;
+    padding: 5px;
     align-items: center;
     justify-content: center;
-    z-index: 99;
-    border: 1px solid #eee;
+    font-weight: 600;
+    font-size: 13px;
 }
 
 .recomend {
