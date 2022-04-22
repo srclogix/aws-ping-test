@@ -64,22 +64,27 @@ const getRegionFlags = (regionCode) => {
         case "ap-northeast-2":
             return "south-korea";
         case "ap-southeast-1":
-            return "";
+            return "singapore";
         case "ap-southeast-2":
-            return "";
+            return "australia";
         case "ap-northeast-1":
-            return "";
+            return "japan";
         case "ca-central-1":
-            return "";
+            return "canada";
         case "eu-central-1":
+            return "germany";
         case "eu-west-1":
+            return "ireland";
         case "eu-west-2":
+            return "united-kingdom";
         case "eu-south-1":
-        case "eu-west-3":
-        case "eu-north-1":
             return "italy";
+        case "eu-west-3":
+            return "france";
+        case "eu-north-1":
+            return "sweden";
         case "sa-east-1":
-            return "";
+            return "brazil";
         default:
             return "";
     }
