@@ -243,6 +243,7 @@ const Ping = () => {
                                             <span className="progress-bar" style={{ width: `${region.pings.length * TOTAL_PINGS}%` }} />
                                         </div>
                                     }
+
                                     <div className='latency'>
                                         Latency(in ms)
                                         <span className={getLatencyStyle(region.latency)}>

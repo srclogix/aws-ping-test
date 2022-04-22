@@ -178,7 +178,6 @@ body {
 .region-sec {
     display: flex;
     justify-content: center;
-    border-bottom: 1px solid #eee;
     padding-bottom: 8px;
     margin-bottom: 8px;
     font-size: 14px;
@@ -187,7 +186,7 @@ body {
 }
 
 .region-name {
-    margin-left: 15px;
+    margin-left: 12px;
     font-weight: 600;
     font-size: 14px;
     color: #000;
@@ -251,11 +250,12 @@ body {
 
 .progress {
     width: 100%;
-    max-width: 260px;
-    height: 6px;
+    height: 2px;
     background: #e1e4e8;
-    border-radius: 3px;
+    border-radius: 0;
     overflow: hidden;
+    position: relative;
+    bottom: 8px;
 }
 
 .progress-bar {
