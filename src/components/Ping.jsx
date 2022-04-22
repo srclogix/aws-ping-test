@@ -1,8 +1,6 @@
 import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import './Ping.css';
-
-// import Restore from '../../public/images/restore.svg';
 const ping = require('web-pingjs');
 
 // Define the regions to check.
@@ -213,7 +211,6 @@ const Ping = () => {
                         isFinished &&
                         <div className='refresh-icon' onClick={startPingTest}>
                             <img src='images/restore.svg' />
-                            {/* <Restore /> */}
                             <span className='tooltiptext'>Refresh</span>
                         </div>
                     }
@@ -230,7 +227,6 @@ const Ping = () => {
                                         recommendedRegion === index &&
                                         <div className='recomend'>
                                             <img src='images/recommended.svg' />
-                                            {/* <Recommended /> */}
                                         </div>
                                     }
                                     <div className='region-sec'>
@@ -240,6 +236,9 @@ const Ping = () => {
                                         <div className='region-name'>
                                             {region.name}
                                         </div>
+                                    </div>
+                                    <div className="progress">
+                                        <span className="progress-bar" style={{ width: `${region.pings.length * TOTAL_PINGS}%` }} />
                                     </div>
                                     <div className='latency'>
                                         Latency(in ms)
