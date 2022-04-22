@@ -207,6 +207,7 @@ const Ping = () => {
                     <h4 className='header-title'>Media Region Test
                         <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
                     </h4>
+                    {/* refresh button */}
                     {
                         isFinished &&
                         <div className='refresh-icon' onClick={startPingTest}>
@@ -237,17 +238,17 @@ const Ping = () => {
                                             {region.name}
                                         </div>
                                     </div>
+                                    {/* progress bar */}
                                     {
                                         isReady && !isFinished &&
                                         <div className="progress">
                                             <span className="progress-bar" style={{ width: `${region.pings.length * TOTAL_PINGS}%` }} />
                                         </div>
                                     }
-
                                     <div className='latency'>
                                         Latency(in ms)
                                         <span className={getLatencyStyle(region.latency)}>
-                                            {region.latency || 'NAN'}
+                                            {region.latency || '0'}
                                         </span>
                                     </div>
                                     <span className='count-no'>{region.pings.length}</span>
