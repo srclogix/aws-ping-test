@@ -364,14 +364,16 @@ h4.header-title {
     margin-bottom: 10px;
 }
 
+/* card section responsive */
+
 @media(max-width: 576px){
     .region-img img {
-        width: 32px;
-        height: 32px;
-    }
+        width: 60px;
+        height: 60px;
+        padding: 8px 0 13px 0;
+    } 
 }
 
-/* card section responsive */
 @media (max-width: 1045px) {
   .row {
     margin: 0;
@@ -414,10 +416,6 @@ h4.header-title {
     }
     .region-sec {
         flex-direction: column;
-    }
-    .region-img {
-        transform: scale(1.4);
-        padding: 8px 0 13px 0;
     }
 }
 
