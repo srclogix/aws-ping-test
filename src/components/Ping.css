@@ -326,17 +326,17 @@ body {
   }
 }
 
-svg{
-    fill: #000;
+svg {
+  fill: #000;
 }
 
 a.logo {
-    display: grid;
-    place-items: start;
-    width: 200px;
-    height: 46.14px;
-    left: 0;
-    padding: 18px 0 0 30px;
+  display: grid;
+  place-items: start;
+  width: 200px;
+  height: 46.14px;
+  left: 0;
+  padding: 18px 0 0 30px;
 }
 
 h4.header-title {
@@ -409,7 +409,7 @@ h4.header-title {
   }
   svg {
     fill: #fff;
-}
+  }
   h4.header-title {
     color: #fff;
   }
@@ -423,10 +423,15 @@ h4.header-title {
   .region-name {
     color: #fff;
   }
+  .loader_wrapper {
+    background: #5a5a5a;
+  }
+  .gray-border {
+    border: 1px solid #5a5a5a;
+  }
   .count-no {
     color: #000;
   }
-  
 }
 /* ============================================
 26.04.22 custom css
