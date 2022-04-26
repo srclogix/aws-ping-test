@@ -256,7 +256,8 @@ const Ping = () => {
                   </div>
                   <div className="region-name">{region.name}</div>
                 </div>
-                {/* progress bar */}
+                {/* edited by me */}
+                <div className="loader_wrapper">
                 {isReady && !isFinished && (
                   <div className="progress">
                     <span
@@ -265,6 +266,10 @@ const Ping = () => {
                     />
                   </div>
                 )}
+                </div>
+                {/* edited by me */}
+                {/* progress bar */}
+                
                 <div className="latency">
                   Latency(in ms)
                   <span className={getLatencyStyle(region.latency)}>
@@ -277,11 +282,6 @@ const Ping = () => {
           ))}
         </div>
       </div>
-      {/* background image */}
-    <div className="footer_bg">
-        {/* <img src="bottom-bg.png" alt="" /> */}
-    </div>
-    {/* background image */}
     </div>
   );
 };

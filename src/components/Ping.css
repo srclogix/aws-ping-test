@@ -16,7 +16,6 @@ body {
     margin-left: -30px;
 }
 
-
 .container {
     padding-right: 15px;
     padding-left: 15px;
@@ -28,8 +27,6 @@ body {
 .m-t-20 {
     margin-top: 20px !important;
 }
-
-
 
 .col-md-4 {
     flex: 0 0 30%;
@@ -293,16 +290,8 @@ body {
   position: absolute;
   z-index: -1;
 }
-.footer_bg_image{
-  background-image: url("/public/header-bg.jpg");
-  height: 200px;
-  width: 212px;
-  background-position: center;
-  background-size: cover;
-  top: 0;
-  left: 80px;
-  position: absolute;
-}
+
+
 /* background image */
 
 /* top and bottom margin */
@@ -344,14 +333,13 @@ a.logo {
   left: 0;
   padding: 0 0 0 30px;
 }
-img {
+a.logo img {
   max-width: 100%;
   height: auto;
-}
-.logo img {
   width: 200px;
   height: 46.14px;
 }
+
 .logo_bg img {
   position: absolute;
   left: -15px;
@@ -369,6 +357,11 @@ h4.header-title {
 .refresh-icon {
   position: unset;
 }
+
+.loader_wrapper{
+    background-color: ;
+}
+
 /* card section responsive */
 @media (max-width: 1045px) {
   .row {
@@ -378,9 +371,9 @@ h4.header-title {
 /* card section responsive*/
 
 /* card background */
-.green-border.gray-border {
+/* .green-border.gray-border {
     background: #fff;
-}
+} */
 /* card background */
 
 /* this code is for mobile responsive */
@@ -395,10 +388,40 @@ h4.header-title {
     background-image: url("/public/bottom-bg.png");
     background-position: bottom right;
     background-repeat: no-repeat;
-    background-size: 20%;
-    padding-bottom: 60px;
-    
+    background-size: 200px;
+    padding-bottom: 60px;   
 }
+
+@media(max-width: 1012px){
+    a.logo{
+        padding-left: 12px;
+    }
+}
+
+@media(max-width: 992px){
+    .gray-border:hover, .green-border:hover {
+        transform: inherit;
+        box-shadow: none;    
+    }
+    .region-sec {
+        flex-direction: column;
+    }
+    .region-img {
+        transform: scale(1.4);
+        padding: 8px 0 13px 0;
+    }
+}
+
+/* @media (prefers-color-scheme: dark) {
+    body{
+      background: #000 !important;
+      color: #fff;
+    }
+
+    .green-border .region-name {
+        color: #000;
+    }
+} */
 /* ============================================
 26.04.22 custom css
 =============================================== */
