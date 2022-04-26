@@ -359,7 +359,8 @@ h4.header-title {
 }
 
 .loader_wrapper{
-    background-color: ;
+    background-color: #eee;
+    height: 3px;
 }
 
 /* card section responsive */
