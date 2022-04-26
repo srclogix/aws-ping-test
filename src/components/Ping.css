@@ -397,6 +397,12 @@ h4.header-title {
 }
 /* card section responsive fixing */
 
+/* card background */
+.green-border.gray-border {
+    background: #fff;
+}
+/* card background */
+
 /* this code is for mobile responsive */
 @media (max-width: 630px) {
   .col-md-4 {
@@ -405,26 +411,20 @@ h4.header-title {
   }
 }
 /* this code is for mobile responsive */
-/* .green-border {
-  background: #fff;
-} */
 
-.container{
-    position: relative;
-}
-
-/* .container::before{
+body::before{
     position: absolute;
     content: "";
     bottom: 0;
     right: 0;
-    background-image: url("/public/bottom-bg.png");
+    background-image: url("/public/header-bg.jpg");
+    transform: rotate(180deg);
     background-repeat: no-repeat;
     background-size: 100%;
     display: block;
     height: 191px;
     width: 168px;
-} */
+}
 
 /* ============================================
 pritam custom css
