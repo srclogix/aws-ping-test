@@ -276,3 +276,139 @@ body {
     }
 
 }
+
+
+/* ============================================
+pritam custom css
+=============================================== */
+
+/* background image */
+.top_bg_image {
+  background-image: url("/public/header-bg.jpg");
+  height: 200px;
+  width: 212px;
+  background-position: center;
+  background-size: cover;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+.footer_bg_image{
+  background-image: url("/public/header-bg.jpg");
+  height: 200px;
+  width: 212px;
+  background-position: center;
+  background-size: cover;
+  top: 0;
+  left: 80px;
+  position: absolute;
+
+}
+/* background image */
+
+/* top and bottom margin */
+.region-test {
+  margin-bottom: 20px;
+}
+/* top and bottom margin */
+
+/* ping text animation start */
+.latency span {
+  animation: color_change 8s infinite alternate;
+  position: relative;
+  color: #d42103;
+}
+@keyframes color_change {
+  0% {
+    color: #d42103;
+  }
+  25% {
+    color: #0066f1;
+  }
+  50% {
+    color: #038dee;
+  }
+  75% {
+    color: #01b958;
+  }
+  100% {
+    color: #d42103;
+  }
+}
+/* ping text animation end */
+
+/* line number 207 */
+/* set a new logo on the top */
+a.logo {
+  display: grid;
+  place-items: start;
+  position: absolute;
+  left: 0;
+  padding: 0 0 0 30px;
+}
+img {
+  max-width: 100%;
+  height: auto;
+}
+.logo img {
+  width: 200px;
+  height: 46.14px;
+}
+.logo_bg img {
+  position: absolute;
+  left: -15px;
+  top: 0;
+  width: 200px;
+  z-index: -1;
+}
+
+h4.header-title {
+  margin-top: 95px;
+}
+/* set a new logo on the top */
+
+/* refresh icon responsive fix */
+.refresh-icon {
+  position: unset;
+}
+
+/* set a new logo on the bottom */
+.footer_bg_image {
+  background-image: url("/public/header-bg.jpg");
+    height: 200px;
+    width: 212px;
+    background-position: center;
+    background-size: cover;
+    bottom: -33px;
+    right: 0;
+    position: absolute;
+    transform: rotate(180deg);
+}
+
+/* set a new logo on the bottom */
+
+/* card section responsive fixing */
+@media (max-width: 1045px) {
+  .row {
+    margin: 0;
+  }
+}
+/* card section responsive fixing */
+
+/* this code is for mobile responsive */
+@media (max-width: 630px) {
+  .col-md-4 {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+}
+/* this code is for mobile responsive */
+/* .green-border {
+  background: #fff;
+} */
+
+/* ============================================
+pritam custom css
+=============================================== */
