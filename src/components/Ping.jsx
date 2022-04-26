@@ -278,7 +278,9 @@ const Ping = () => {
         </div>
       </div>
       {/* background image */}
-    {/* <div className="footer_bg_image"></div> */}
+    <div className="footer_bg">
+        {/* <img src="bottom-bg.png" alt="" /> */}
+    </div>
     {/* background image */}
     </div>
   );
