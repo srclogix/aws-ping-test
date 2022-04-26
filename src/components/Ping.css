@@ -153,6 +153,7 @@ body {
 }
 
 .gray-border {
+    background: #fff;
   border: 1px solid #eee;
 }
 
@@ -432,6 +433,9 @@ h4.header-title {
   .count-no {
     color: #000;
   }
+  .gray-border {
+    background: #000;
+}
 }
 /* ============================================
 26.04.22 custom css
