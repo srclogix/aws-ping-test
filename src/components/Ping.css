@@ -279,9 +279,8 @@ body {
 
 
 /* ============================================
-pritam custom css
+26.04.22 custom css
 =============================================== */
-
 /* background image */
 .top_bg_image {
   background-image: url("/public/header-bg.jpg");
@@ -294,7 +293,6 @@ pritam custom css
   position: absolute;
   z-index: -1;
 }
-
 .footer_bg_image{
   background-image: url("/public/header-bg.jpg");
   height: 200px;
@@ -304,7 +302,6 @@ pritam custom css
   top: 0;
   left: 80px;
   position: absolute;
-
 }
 /* background image */
 
@@ -339,7 +336,6 @@ pritam custom css
 }
 /* ping text animation end */
 
-/* line number 207 */
 /* set a new logo on the top */
 a.logo {
   display: grid;
@@ -373,29 +369,13 @@ h4.header-title {
 .refresh-icon {
   position: unset;
 }
-
-/* set a new logo on the bottom */
-/* .footer_bg_image {
-  background-image: url("/public/header-bg.jpg");
-    height: 200px;
-    width: 212px;
-    background-position: center;
-    background-size: cover;
-    bottom: -33px;
-    right: 0;
-    position: absolute;
-    transform: rotate(180deg);
-} */
-
-/* set a new logo on the bottom */
-
-/* card section responsive fixing */
+/* card section responsive */
 @media (max-width: 1045px) {
   .row {
     margin: 0;
   }
 }
-/* card section responsive fixing */
+/* card section responsive*/
 
 /* card background */
 .green-border.gray-border {
@@ -411,21 +391,6 @@ h4.header-title {
   }
 }
 /* this code is for mobile responsive */
-
-/* body::before{
-    position: absolute;
-    content: "";
-    bottom: 0;
-    right: 0;
-    background-image: url("/public/header-bg.jpg");
-    transform: rotate(180deg);
-    background-repeat: no-repeat;
-    background-size: 100%;
-    display: block;
-    height: 191px;
-    width: 168px;
-} */
-
 #root{
     background-image: url("/public/bottom-bg.png");
     background-position: bottom right;
@@ -434,7 +399,6 @@ h4.header-title {
     padding-bottom: 60px;
     
 }
-
 /* ============================================
-pritam custom css
+26.04.22 custom css
 =============================================== */
