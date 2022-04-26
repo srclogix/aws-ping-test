@@ -359,8 +359,16 @@ h4.header-title {
 }
 
 .loader_wrapper{
-    background-color: #eee;
-    height: 3px;
+    background: #e1e4e8;
+    height: 2px;
+    margin-bottom: 10px;
+}
+
+@media(max-width: 576px){
+    .region-img img {
+        width: 32px;
+        height: 32px;
+    }
 }
 
 /* card section responsive */
