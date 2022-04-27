@@ -227,7 +227,7 @@ body {
 .progress-bar {
   display: block;
   height: 100%;
-  background: linear-gradient(90deg, #FFD33D, #EA4AAA 17%, #B34BFF 34%, #01FEFF 51%, #FFD33D 68%, #EA4AAA 85%, #B34BFF);
+  background: #4285F4;
   background-size: 300% 100%;
   animation: progress-animation 2s linear infinite;
 }
@@ -365,7 +365,12 @@ span.latency-unavailable {
                     27.04.22 code
 ==================================================== */
 
-/* card section responsive */
+/* responsive */
+@media(max-width: 1050px){
+  .region-name {
+width: 150px;
+  }
+}
 @media (max-width: 1045px) {
   .row {
       margin: 0;
@@ -381,6 +386,9 @@ span.latency-unavailable {
       flex-basis: 100%;
       max-width: 100%;
   }
+  .region-name {
+    width: 100%;
+      }
 }
 @media (max-width: 576px) {
   .green-border .region-img img {
