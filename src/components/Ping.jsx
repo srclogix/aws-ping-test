@@ -200,12 +200,12 @@ const PingComponent = () => {
               {/* <======= it has added 27.04.22*/}
               <h4 className="header-title">
                 Media Region Test
-                <p>
+              </h4>
+              <p>
                   Latency ping test tool. Tests across various AWS Media Regions
                   across the globe. Help user pick the most optimal media
                   region.
                 </p>
-              </h4>
             </div>
             {/* refresh button */}
             {isFinished && (
