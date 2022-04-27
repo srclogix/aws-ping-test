@@ -250,7 +250,7 @@ const PingComponent = () => {
                                     <div className="latency">
                                         Latency(in ms)
                                         <span className={getLatencyStyle(region.latency)}>
-                                            {region.latency || <span className='latency-unavailable'>Unreachable</span>}
+                                            {region.latency || <span className='latency-unavailable red'>Unreachable</span>}
                                         </span>
                                     </div>
                                     <span className="count-no">{region.pings.length}</span>
