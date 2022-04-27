@@ -89,25 +89,22 @@ const getRegionFlags = (regionCode) => {
 }
 
 const getLatencyStyle = (time) => {
-    switch (time) {
-        case time > 700:
-            return 'red';
-        case time >= 500 && time <= 700:
-            return 'orange';
-        default:
-            return '';
-    }
+    if (!time || time > 4000)
+        return 'red';
+    else if (time >= 2000 && time <= 4000)
+        return 'orange';
 }
 
 const checkAvgLatency = (list) => {
-    return Math.round(list.reduce((sum, num) => sum + num, 0) / list.length);
+    return Math.round(list.reduce((sum, num) => sum + (num ? num : 0), 0) / list.length);
 }
 
-const Ping = () => {
+const PingComponent = () => {
     const [pingResults, setPingResults] = useState();
     const [isReady, setIsReady] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     const [recommendedRegion, setRecommendedRegion] = useState();
+    const [pingCount, setPingCount] = useState();
 
     const initPingRegions = () => {
         const regions = Object.entries(regionsMap);
@@ -115,7 +112,7 @@ const Ping = () => {
         const awsPingMap = regions.map(region => ({
             codename: region[0],
             name: region[1],
-            url: AWS_REGIONS[region[0]],
+            url: 'https://' + AWS_REGIONS[region[0]],
             pings: [],
             latency: ''
         }))
@@ -128,7 +125,7 @@ const Ping = () => {
         const newRegionMap = newPingResults[index];
 
         newRegionMap.pings.push(time);
-        newRegionMap.latency = time && checkAvgLatency(newRegionMap.pings);
+        newRegionMap.latency = time ? checkAvgLatency(newRegionMap.pings) : newRegionMap.latency;
 
         setPingResults(newPingResults);
     }
@@ -141,23 +138,25 @@ const Ping = () => {
                 console.log('Ping time was ' + String(delta) + 'ms => ' + url);
                 addPingResult(index, delta);
             }).catch(function (err) {
-                console.error('Could not ping remote URL', err);
+                console.error('Could not ping remote URL =>', url, err);
+                addPingResult(index, '');
             });
         else
             addPingResult(index, null);
     }
 
     const cloudPingTest = async () => {
+        let timer = 0;
+
         const pingRequests = pingResults.map((region, index) => checkLatency(index));
 
-        return await Promise.all(pingRequests);
+        return await Promise.allSettled(pingRequests);
     }
 
-    const startPinging = async (times) => {
-        for (let i = 0; i < times; i++) {
-            console.log('Ping test =>', i + 1)
-            await cloudPingTest();
-        }
+    const startPinging = async () => {
+        console.log('Ping test =>', pingCount + 1)
+        await cloudPingTest();
+        setTimeout(() => setPingCount(pingCount + 1), 5000);
     }
 
     const startPingTest = () => {
@@ -165,6 +164,7 @@ const Ping = () => {
         setIsFinished(false);
         setRecommendedRegion();
         initPingRegions();
+        setPingCount(0);
     }
 
     useEffect(() => {
@@ -172,8 +172,6 @@ const Ping = () => {
     }, [])
 
     useEffect(() => {
-        console.log('aanni', pingResults);
-
         if (pingResults?.length === TOTAL_REGIONS)
             setIsReady(true);
         if (pingResults?.every(region => region.pings.length === TOTAL_PINGS))
@@ -181,9 +179,9 @@ const Ping = () => {
     }, [pingResults])
 
     useEffect(() => {
-        if (isReady)
-            startPinging(TOTAL_PINGS);
-    }, [isReady])
+        if (isReady && pingCount != TOTAL_PINGS)
+            startPinging();
+    }, [isReady, pingCount])
 
     const calculateRecommendRegion = () => {
         const latencies = pingResults.map(region => region.latency).filter(latency => latency);
@@ -196,8 +194,10 @@ const Ping = () => {
     }
 
     useEffect(() => {
-        if (isFinished)
+        if (isFinished) {
+            console.log('Ping result =>', pingResults);
             calculateRecommendRegion();
+        }
     }, [isFinished])
 
     return (
@@ -248,7 +248,7 @@ const Ping = () => {
                                     <div className='latency'>
                                         Latency(in ms)
                                         <span className={getLatencyStyle(region.latency)}>
-                                            {region.latency || '0'}
+                                            {region.latency || 'Unreachable'}
                                         </span>
                                     </div>
                                     <span className='count-no'>{region.pings.length}</span>
@@ -262,4 +262,4 @@ const Ping = () => {
     )
 }
 
-export default Ping
+export default PingComponent
