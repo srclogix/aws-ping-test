@@ -8,9 +8,8 @@ body {
   letter-spacing: 0.00938em;
   background-color: #fff;
 }
-::selection{
-  background: #B0B0B0;
-  color: #fff;
+::selection {
+  background: rgba(255, 2, 1, 0.1);
 }
 .row {
   display: flex;
@@ -269,7 +268,7 @@ h4.header-title {
   position: unset;
 }
 .loader_wrapper {
-  background: #E1E4E8;
+  background: #eee;
   height: 2px;
   margin-bottom: 10px;
 }
@@ -316,12 +315,8 @@ h4.header-title {
 }
 @media (prefers-color-scheme: dark) {
   body {
-      background: #000 !important;
+    background: #333;
       color: #fff;
-  }
-  ::selection {
-      background: #B0B0B0;
-      color: #000;
   }
   svg {
       fill: #fff;
@@ -352,6 +347,25 @@ h4.header-title {
   }
 }
 
+/* ================================================
+                    27.04.22 code
+==================================================== */
+.d-flex .header-title{
+  margin-top: 0;
+}
+.region-test .d-flex {
+  align-items: start;
+}
+.refresh-icon {
+  padding-top: 9px;
+}
+
+.region-test .d-flex {
+  margin-top: 90px;
+}
+/* ================================================
+                    27.04.22 code
+==================================================== */
 
 
 
