@@ -330,8 +330,9 @@ h4.header-title {
       border: 1px solid #5A5A5A;
   }
   .count-no {
-      color: #000;
-  }
+    color: #fff;
+    background: #5A5A5A;
+}
   .region-test
   .gray-border {
       background: #000; 
@@ -353,7 +354,7 @@ h4.header-title {
 }
 
 .region-test .d-flex {
-  margin-top: 90px;
+  margin-top: 70px;
 }
 
 span.latency-unavailable {
