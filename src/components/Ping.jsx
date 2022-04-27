@@ -201,61 +201,68 @@ const PingComponent = () => {
     }, [isFinished])
 
     return (
-        <div className='container'>
-            <div className='region-test'>
-                <div className='d-flex'>
-                    <h4 className='header-title'>Media Region Test
-                        <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
-                    </h4>
-                    {/* refresh button */}
-                    {
-                        isFinished &&
-                        <div className='refresh-icon' onClick={startPingTest}>
-                            <img src='images/restore.svg' />
-                            <span className='tooltiptext'>Refresh</span>
-                        </div>
-                    }
-                </div>
-                <div className='row m-t-20'>
-                    {
-                        pingResults?.map((region, index) =>
-                            <div className='col-md-4' key={nanoid()}>
-                                <div className={`green-border ${recommendedRegion === index ? "" : "gray-border"}`}>
-                                    <span className='number'>
-                                        {index + 1}
-                                    </span>
-                                    {
-                                        recommendedRegion === index &&
-                                        <div className='recomend'>
-                                            <img src='images/recommended.svg' />
-                                        </div>
-                                    }
-                                    <div className='region-sec'>
-                                        <div className='region-img'>
-                                            <img src={`images/flags/${getRegionFlags(region.codename)}.png`} alt='' />
-                                        </div>
-                                        <div className='region-name'>
-                                            {region.name}
-                                        </div>
-                                    </div>
-                                    {/* progress bar */}
-                                    {
-                                        isReady && !isFinished &&
-                                        <div className="progress">
-                                            <span className="progress-bar" style={{ width: `${region.pings.length * TOTAL_PINGS}%` }} />
-                                        </div>
-                                    }
-                                    <div className='latency'>
-                                        Latency(in ms)
-                                        <span className={getLatencyStyle(region.latency)}>
-                                            {region.latency || 'Unreachable'}
-                                        </span>
-                                    </div>
-                                    <span className='count-no'>{region.pings.length}</span>
-                                </div>
+        <div className="global_wrapper">
+            <a src="/" className="logo" title="Toktown">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 306.8 70.8"><circle cx="30.9" cy="34.2" r="3.8" fill="#FF0201"></circle><circle cx="41.9" cy="34.2" r="3.8"></circle><circle cx="19.8" cy="34.2" r="3.8"></circle><path d="M30.9 8.8c-14 0-25.4 11.4-25.4 25.4s11.4 25.4 25.4 25.4 25.4-11.4 25.4-25.4S44.9 8.8 30.9 8.8zm0 45.1c-10.9 0-19.7-8.8-19.7-19.7S20 14.5 30.9 14.5s19.7 8.8 19.7 19.7-8.8 19.7-19.7 19.7zm50.9-32.7v32.4H74V21.2H61.5v-7.3h32.9v7.3H81.8zm38.9 18.5c0 8.5-6.2 14.6-14.4 14.6s-14.4-6.2-14.4-14.6c0-8.5 6.2-14.6 14.4-14.6s14.4 6.1 14.4 14.6zm-7.4 0c0-5.2-3.4-7.8-7-7.8s-7 2.6-7 7.8 3.4 7.8 7 7.8 7-2.5 7-7.8zm29-2.1l11.3 16h-9.1L137.1 43l-3.1 3.2v7.3h-7.4V13h7.4v23.2l9.5-10.2h9.7l-10.9 11.6zm32.9-16.4v32.4h-7.8V21.2h-12.5v-7.3h32.9v7.3h-12.6zm38.9 18.5c0 8.5-6.2 14.6-14.4 14.6s-14.4-6.2-14.4-14.6c0-8.5 6.2-14.6 14.4-14.6s14.4 6.1 14.4 14.6zm-7.5 0c0-5.2-3.4-7.8-7-7.8s-7 2.6-7 7.8 3.4 7.8 7 7.8c3.7.1 7-2.5 7-7.8zM242.7 26l5.9 17.8 5.1-17.8h7.4l-8.6 27.6H245l-6.4-18.8-6.3 18.8h-7.6L215.9 26h7.8l5.1 17.7 6-17.7h7.9zm30.5 27.5h-7.4V26h7.2v3.4c1.7-2.9 5-4.1 8-4.1 6.8 0 10 4.9 10 10.9v17.4h-7.4V37.5c0-3.1-1.5-5.5-5.1-5.5-3.2 0-5.2 2.5-5.2 5.7v15.8z"></path></svg>
+            </a>
+            <div className='container'>
+                <div className='region-test'>
+                    <div className='d-flex'>
+                        <h4 className='header-title'>Media Region Test
+                            <p>Latency ping test tool. Tests across various AWS Media Regions across the globe. Help user pick the most optimal media region.</p>
+                        </h4>
+                        {/* refresh button */}
+                        {
+                            isFinished &&
+                            <div className='refresh-icon' onClick={startPingTest}>
+                                <img src='images/restore.svg' />
+                                <span className='tooltiptext'>Refresh</span>
                             </div>
-                        )
-                    }
+                        }
+                    </div>
+                    <div className='row m-t-20'>
+                        {
+                            pingResults?.map((region, index) =>
+                                <div className='col-md-4' key={nanoid()}>
+                                    <div className={`green-border ${recommendedRegion === index ? "" : "gray-border"}`}>
+                                        <span className='number'>
+                                            {index + 1}
+                                        </span>
+                                        {
+                                            recommendedRegion === index &&
+                                            <div className='recomend'>
+                                                <img src='images/recommended.svg' />
+                                            </div>
+                                        }
+                                        <div className='region-sec'>
+                                            <div className='region-img'>
+                                                <img src={`images/flags/${getRegionFlags(region.codename)}.png`} alt='' />
+                                            </div>
+                                            <div className='region-name'>
+                                                {region.name}
+                                            </div>
+                                        </div>
+                                        {/* progress bar */}
+                                        <div className="loader_wrapper">
+                                            {
+                                                isReady && !isFinished &&
+                                                <div className="progress">
+                                                    <span className="progress-bar" style={{ width: `${region.pings.length * TOTAL_PINGS}%` }} />
+                                                </div>
+                                            }
+                                        </div>
+                                        <div className='latency'>
+                                            Latency(in ms)
+                                            <span className={getLatencyStyle(region.latency)}>
+                                                {region.latency || 'Unreachable'}
+                                            </span>
+                                        </div>
+                                        <span className='count-no'>{region.pings.length}</span>
+                                    </div>
+                                </div>
+                            )
+                        }
+                    </div>
                 </div>
             </div>
         </div>

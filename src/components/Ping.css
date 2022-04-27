@@ -255,7 +255,7 @@ body {
     border-radius: 0;
     overflow: hidden;
     position: relative;
-    bottom: 8px;
+    bottom: 0;
 }
 
 .progress-bar {
@@ -275,4 +275,145 @@ body {
         background-position: 0;
     }
 
+}
+
+.top_bg_image {
+    background-image: url("/public/bottom-bg.png");
+    transform: rotate(180deg);
+    height: 200px;
+    width: 212px;
+    background-position: center;
+    background-size: cover;
+    top: 0;
+    left: 0;
+    position: absolute;
+    z-index: -1;
+}
+
+.region-test {
+    margin-bottom: 20px;
+}
+
+svg {
+    fill: #000;
+}
+
+a.logo {
+    display: grid;
+    place-items: start;
+    width: 200px;
+    height: 46.14px;
+    left: 0;
+    padding: 18px 0 0 30px;
+}
+
+h4.header-title {
+    margin-top: 70px;
+}
+
+.refresh-icon {
+    position: unset;
+}
+
+.loader_wrapper {
+    background: #E1E4E8;
+    height: 2px;
+    margin-bottom: 10px;
+}
+
+/* card section responsive */
+@media (max-width: 1045px) {
+    .row {
+        margin: 0;
+    }
+}
+
+@media (max-width: 630px) {
+    .col-md-4 {
+        flex-basis: 100%;
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .green-border .region-img img {
+        width: 60px;
+        height: 60px;
+        padding: 8px 0 13px 0;
+    }
+}
+
+.global_wrapper {
+    background-image: url("/public/bottom-bg.png");
+    background-position: bottom right;
+    background-repeat: no-repeat;
+    background-size: 200px;
+    padding-bottom: 60px;
+}
+
+@media (max-width: 1012px) {
+    a.logo {
+        padding-left: 12px;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .gray-border:hover,
+    .green-border:hover {
+        transform: inherit;
+        box-shadow: none;
+    }
+
+    .region-sec {
+        flex-direction: column;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background: #000 !important;
+        color: #fff;
+    }
+
+    ::selection {
+        background: #B0B0B0;
+        color: #000;
+    }
+
+    svg {
+        fill: #fff;
+    }
+
+    h4.header-title {
+        color: #fff;
+    }
+
+    .h4.header-title {
+        color: #fff;
+    }
+
+    .region-test p {
+        color: #fff;
+    }
+
+    .region-name {
+        color: #fff;
+    }
+
+    .loader_wrapper {
+        background: #5A5A5A;
+    }
+
+    .gray-border {
+        border: 1px solid #5A5A5A;
+    }
+
+    .count-no {
+        color: #000;
+    }
+
+    .gray-border {
+        background: #000;
+    }
 }
