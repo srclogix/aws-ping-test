@@ -2,7 +2,6 @@ import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import './Ping.css';
 const ping = require('web-pingjs');
-
 // Define the regions to check.
 const AWS_REGIONS = {
     "us-east-1": "ec2.us-east-1.amazonaws.com",
@@ -47,7 +46,6 @@ const regionsMap = {
 };
 const TOTAL_PINGS = 10;
 const TOTAL_REGIONS = 18;
-
 const getRegionFlags = (regionCode) => {
     switch (regionCode) {
         case "us-east-1":
@@ -87,25 +85,21 @@ const getRegionFlags = (regionCode) => {
             return "";
     }
 }
-
 const getLatencyStyle = (time) => {
     if (!time || time > 4000)
         return 'red';
     else if (time >= 2000 && time <= 4000)
         return 'orange';
 }
-
 const checkAvgLatency = (list) => {
     return Math.round(list.reduce((sum, num) => sum + (num ? num : 0), 0) / list.length);
 }
-
 const PingComponent = () => {
     const [pingResults, setPingResults] = useState();
     const [isReady, setIsReady] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     const [recommendedRegion, setRecommendedRegion] = useState();
     const [pingCount, setPingCount] = useState();
-
     const initPingRegions = () => {
         const regions = Object.entries(regionsMap);
         const awsPingMap = regions.map(region => ({
@@ -117,7 +111,6 @@ const PingComponent = () => {
         }))
         setPingResults(awsPingMap);
     }
-
     const addPingResult = (index, time) => {
         const newPingResults = [...pingResults];
         const newRegionMap = newPingResults[index];
@@ -125,7 +118,6 @@ const PingComponent = () => {
         newRegionMap.latency = time ? checkAvgLatency(newRegionMap.pings) : newRegionMap.latency;
         setPingResults(newPingResults);
     }
-
     const checkLatency = (index) => {
         const { url } = pingResults[index];
         if (url)
@@ -139,21 +131,16 @@ const PingComponent = () => {
         else
             addPingResult(index, null);
     }
-
     const cloudPingTest = async () => {
         let timer = 0;
-
         const pingRequests = pingResults.map((region, index) => checkLatency(index));
-
         return await Promise.allSettled(pingRequests);
     }
-
     const startPinging = async () => {
         console.log('Ping test =>', pingCount + 1)
         await cloudPingTest();
         setTimeout(() => setPingCount(pingCount + 1), 5000);
     }
-
     const startPingTest = () => {
         setIsReady(false);
         setIsFinished(false);
@@ -161,23 +148,19 @@ const PingComponent = () => {
         initPingRegions();
         setPingCount(0);
     }
-
     useEffect(() => {
         startPingTest();
     }, [])
-
     useEffect(() => {
         if (pingResults?.length === TOTAL_REGIONS)
             setIsReady(true);
         if (pingResults?.every(region => region.pings.length === TOTAL_PINGS))
             setIsFinished(true);
     }, [pingResults])
-
     useEffect(() => {
         if (isReady && pingCount != TOTAL_PINGS)
             startPinging();
     }, [isReady, pingCount])
-
     const calculateRecommendRegion = () => {
         const latencies = pingResults.map(region => region.latency).filter(latency => latency);
         const minLatency = Math.min(...latencies);
@@ -185,14 +168,12 @@ const PingComponent = () => {
         setRecommendedRegion(minLatencyIndex);
         return minLatencyIndex;
     }
-
     useEffect(() => {
         if (isFinished) {
             console.log('Ping result =>', pingResults);
             calculateRecommendRegion();
         }
     }, [isFinished])
-
     return (
         <div className="global_wrapper">
             <a src="/" className="logo" title="Toktown">
@@ -282,5 +263,4 @@ const PingComponent = () => {
         </div>
     )
 }
-
 export default PingComponent
