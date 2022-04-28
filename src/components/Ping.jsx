@@ -86,9 +86,9 @@ const getRegionFlags = (regionCode) => {
     }
 }
 const getLatencyStyle = (time) => {
-    if (!time || time > 4000)
+    if (!time || time > 700)
         return 'red';
-    else if (time >= 2000 && time <= 4000)
+    else if (time >= 500 && time <= 700)
         return 'orange';
 }
 const checkAvgLatency = (list) => {
