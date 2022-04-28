@@ -376,6 +376,11 @@ width: 150px;
       margin: 0;
   }
 }
+@media(max-width: 900px){
+  .recomend img{
+    width: 82px;
+  }
+}
 @media (max-width: 768px) {
   span.latency-unavailable {
     font-size: 27px;
@@ -388,6 +393,9 @@ width: 150px;
   }
   .region-name {
     width: 100%;
+      }
+      .recomend img{
+        width: 100px;
       }
 }
 @media (max-width: 576px) {
