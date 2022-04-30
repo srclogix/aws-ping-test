@@ -25,24 +25,24 @@ const AWS_REGIONS = {
     "ap-northeast-2": "ec2.ap-northeast-2.amazonaws.com",
 };
 const regionsMap = {
-    "us-east-1": "US East (N. Virginia) (us-east-1)",
-    "us-east-2": "US East (Ohio) (us-east-2)",
-    "us-west-1": "US West (N. California) (us-west-1)",
-    "us-west-2": "US West (Oregon) (us-west-2)",
-    "af-south-1": "Africa (Cape Town) (af-south-1)",
-    "ap-south-1": "Asia Pacific (Mumbai) (ap-south-1)",
-    "ap-northeast-2": "Asia Pacific (Seoul) (ap-northeast-2)",
-    "ap-southeast-1": "Asia Pacific (Singapore) (ap-southeast-1)",
-    "ap-southeast-2": "Asia Pacific (Sydney) (ap-southeast-2)",
-    "ap-northeast-1": "Asia Pacific (Tokyo) (ap-northeast-1)",
-    "ca-central-1": "Canada (Central) (ca-central-1)",
-    "eu-central-1": "Europe (Frankfurt) (eu-central-1)",
-    "eu-west-1": "Europe (Ireland) (eu-west-1)",
-    "eu-west-2": "Europe (London) (eu-west-2)",
-    "eu-south-1": "Europe (Milan) (eu-south-1)",
-    "eu-west-3": "Europe (Paris) (eu-west-3)",
-    "eu-north-1": "Europe (Stockholm) (eu-north-1)",
-    "sa-east-1": "South America (São Paulo) (sa-east-1)",
+    "us-east-1": "US East (N. Virginia)",
+    "us-east-2": "US East (Ohio)",
+    "us-west-1": "US West (N. California)",
+    "us-west-2": "US West (Oregon)",
+    "af-south-1": "Africa (Cape Town)",
+    "ap-south-1": "Asia Pacific (Mumbai)",
+    "ap-northeast-2": "Asia Pacific (Seoul)",
+    "ap-southeast-1": "Asia Pacific (Singapore)",
+    "ap-southeast-2": "Asia Pacific (Sydney)",
+    "ap-northeast-1": "Asia Pacific (Tokyo)",
+    "ca-central-1": "Canada (Central)",
+    "eu-central-1": "Europe (Frankfurt)",
+    "eu-west-1": "Europe (Ireland)",
+    "eu-west-2": "Europe (London)",
+    "eu-south-1": "Europe (Milan)",
+    "eu-west-3": "Europe (Paris)",
+    "eu-north-1": "Europe (Stockholm)",
+    "sa-east-1": "South America (São Paulo)",
 };
 const TOTAL_PINGS = 10;
 const TOTAL_REGIONS = 18;
@@ -200,7 +200,7 @@ const PingComponent = () => {
                                 region.
                             </p>
                         </div>
-                        {/* refresh button */}
+                    
                         {isFinished && (
                             <div className="element">
                                 <div className="refresh-icon" onClick={startPingTest}>
