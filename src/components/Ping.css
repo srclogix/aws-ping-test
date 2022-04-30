@@ -369,8 +369,8 @@ span.latency-unavailable {
                     29.04.22 code
 ==================================================== */
 .switch.demo1{
-  width: 60px;
-  height: 60px;
+  width: 61px;
+  height: 61px;
   background: #e8e4e4;
   border-radius: 50%;
   padding: 4px;
@@ -458,6 +458,16 @@ width: 150px;
       height: 60px;
       padding: 8px 0 13px 0;
   }
+
+  .switch.demo1 {
+    width: 53px;
+    height: 53px;
+}
+span.c-speedtest-play {
+  top: 48%;
+  width: 16px ;
+  height: 16px;
+}
 }
 
 
