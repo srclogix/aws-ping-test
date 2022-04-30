@@ -92,7 +92,7 @@ body {
       transform: rotate(360deg);
   }
 } */
-.tooltiptext {
+/* .tooltiptext {
   visibility: hidden;
   width: auto;
   background-color: #000;
@@ -107,8 +107,8 @@ body {
   font-size: 12px;
   bottom: -24px;
   white-space: nowrap;
-}
-.tooltiptext:after {
+} */
+/* .tooltiptext:after {
   content: "";
   position: absolute;
   bottom: 100%;
@@ -117,13 +117,13 @@ body {
   border: 5px solid transparent;
   border-bottom-color: #000;
   right: 35px;
-}
-.refresh-icon:hover .tooltiptext {
+} */
+/* .refresh-icon:hover .tooltiptext {
   visibility: visible;
 }
 .refresh-icon:hover .tooltiptext:after {
   left: 43px;
-}
+} */
 .green-border {
   border: 1px solid #6AA84F;
   padding: 10px;
