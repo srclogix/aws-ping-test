@@ -204,9 +204,9 @@ const PingComponent = () => {
                         {isFinished && (
                             <div className="element">
                                 <div className="refresh-icon" onClick={startPingTest}>
-                                    <div className="switch demo1"> {/* here edited by me */}
+                                    <div className="switch demo1 active"> {/* here edited by me */}
                                     {/* <img src="images/play.svg" /> here edited by me only src replaced */}
-                                    <div class="c-speedtest-lodig" id="speedProgress">
+                                    <div class="c-speedtest-lodig loding-0" id="speedProgress">
                                         <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#eee" stroke-width="1" fill-opacity="0"></path><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#0DBE42" stroke-width="6" fill-opacity="0"></path></svg>
                                     </div>
                                     <label></label>
