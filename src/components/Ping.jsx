@@ -4,46 +4,66 @@ import './Ping.css';
 const ping = require('web-pingjs');
 // Define the regions to check.
 const AWS_REGIONS = {
-    "us-east-1": "ec2.us-east-1.amazonaws.com",
-    "us-west-1": "ec2.us-west-1.amazonaws.com",
-    "ap-southeast-1": "ec2.ap-southeast-1.amazonaws.com",
-    "us-west-2": "ec2.us-west-2.amazonaws.com",
-    "sa-east-1": "ec2.sa-east-1.amazonaws.com",
-    "eu-central-1": "ec2.eu-central-1.amazonaws.com",
-    "eu-west-1": "ec2.eu-west-1.amazonaws.com",
-    "ap-northeast-1": "ec2.ap-northeast-1.amazonaws.com",
-    "ap-southeast-2": "ec2.ap-southeast-2.amazonaws.com",
-    "us-east-2": "ec2.us-east-2.amazonaws.com",
-    "af-south-1": "ec2.af-south-1.amazonaws.com",
-    "ap-east-1": "ec2.ap-east-1.amazonaws.com",
-    "ca-central-1": "ec2.ca-central-1.amazonaws.com",
-    "eu-west-2": "ec2.eu-west-2.amazonaws.com",
-    "eu-south-1": "ec2.eu-south-1.amazonaws.com",
-    "eu-west-3": "ec2.eu-west-3.amazonaws.com",
-    "eu-north-1": "ec2.eu-north-1.amazonaws.com",
-    "ap-south-1": "ec2.ap-south-1.amazonaws.com",
-    "ap-northeast-2": "ec2.ap-northeast-2.amazonaws.com",
+    "us-east-1": "dynamodb.us-east-1.amazonaws.com",
+    "us-west-1": "dynamodb.us-west-1.amazonaws.com",
+    "ap-southeast-1": "dynamodb.ap-southeast-1.amazonaws.com",
+    "us-west-2": "dynamodb.us-west-2.amazonaws.com",
+    "sa-east-1": "dynamodb.sa-east-1.amazonaws.com",
+    "eu-central-1": "dynamodb.eu-central-1.amazonaws.com",
+    "eu-west-1": "dynamodb.eu-west-1.amazonaws.com",
+    "ap-northeast-1": "dynamodb.ap-northeast-1.amazonaws.com",
+    "ap-southeast-2": "dynamodb.ap-southeast-2.amazonaws.com",
+    "us-east-2": "dynamodb.us-east-2.amazonaws.com",
+    "af-south-1": "dynamodb.af-south-1.amazonaws.com",
+    "ap-east-1": "dynamodb.ap-east-1.amazonaws.com",
+    "ca-central-1": "dynamodb.ca-central-1.amazonaws.com",
+    "eu-west-2": "dynamodb.eu-west-2.amazonaws.com",
+    "eu-south-1": "dynamodb.eu-south-1.amazonaws.com",
+    "eu-west-3": "dynamodb.eu-west-3.amazonaws.com",
+    "eu-north-1": "dynamodb.eu-north-1.amazonaws.com",
+    "ap-south-1": "dynamodb.ap-south-1.amazonaws.com",
+    "ap-northeast-2": "dynamodb.ap-northeast-2.amazonaws.com",
 };
 const regionsMap = {
-    "us-east-1": "US East (N. Virginia) (us-east-1)",
-    "us-east-2": "US East (Ohio) (us-east-2)",
-    "us-west-1": "US West (N. California) (us-west-1)",
-    "us-west-2": "US West (Oregon) (us-west-2)",
-    "af-south-1": "Africa (Cape Town) (af-south-1)",
-    "ap-south-1": "Asia Pacific (Mumbai) (ap-south-1)",
-    "ap-northeast-2": "Asia Pacific (Seoul) (ap-northeast-2)",
-    "ap-southeast-1": "Asia Pacific (Singapore) (ap-southeast-1)",
-    "ap-southeast-2": "Asia Pacific (Sydney) (ap-southeast-2)",
-    "ap-northeast-1": "Asia Pacific (Tokyo) (ap-northeast-1)",
-    "ca-central-1": "Canada (Central) (ca-central-1)",
-    "eu-central-1": "Europe (Frankfurt) (eu-central-1)",
-    "eu-west-1": "Europe (Ireland) (eu-west-1)",
-    "eu-west-2": "Europe (London) (eu-west-2)",
-    "eu-south-1": "Europe (Milan) (eu-south-1)",
-    "eu-west-3": "Europe (Paris) (eu-west-3)",
-    "eu-north-1": "Europe (Stockholm) (eu-north-1)",
-    "sa-east-1": "South America (São Paulo) (sa-east-1)",
+    "us-east-1": "US East (N. Virginia)",
+    "us-east-2": "US East (Ohio)",
+    "us-west-1": "US West (N. California)",
+    "us-west-2": "US West (Oregon)",
+    "af-south-1": "Africa (Cape Town)",
+    "ap-south-1": "Asia Pacific (Mumbai)",
+    "ap-northeast-2": "Asia Pacific (Seoul)",
+    "ap-southeast-1": "Asia Pacific (Singapore)",
+    "ap-southeast-2": "Asia Pacific (Sydney)",
+    "ap-northeast-1": "Asia Pacific (Tokyo)",
+    "ca-central-1": "Canada (Central)",
+    "eu-central-1": "Europe (Frankfurt)",
+    "eu-west-1": "Europe (Ireland)",
+    "eu-west-2": "Europe (London)",
+    "eu-south-1": "Europe (Milan)",
+    "eu-west-3": "Europe (Paris)",
+    "eu-north-1": "Europe (Stockholm)",
+    "sa-east-1": "South America (São Paulo)",
 };
+// const regionsMap = {
+//     "us-east-1": "US East (N. Virginia) (us-east-1)",
+//     "us-east-2": "US East (Ohio) (us-east-2)",
+//     "us-west-1": "US West (N. California) (us-west-1)",
+//     "us-west-2": "US West (Oregon) (us-west-2)",
+//     "af-south-1": "Africa (Cape Town) (af-south-1)",
+//     "ap-south-1": "Asia Pacific (Mumbai) (ap-south-1)",
+//     "ap-northeast-2": "Asia Pacific (Seoul) (ap-northeast-2)",
+//     "ap-southeast-1": "Asia Pacific (Singapore) (ap-southeast-1)",
+//     "ap-southeast-2": "Asia Pacific (Sydney) (ap-southeast-2)",
+//     "ap-northeast-1": "Asia Pacific (Tokyo) (ap-northeast-1)",
+//     "ca-central-1": "Canada (Central) (ca-central-1)",
+//     "eu-central-1": "Europe (Frankfurt) (eu-central-1)",
+//     "eu-west-1": "Europe (Ireland) (eu-west-1)",
+//     "eu-west-2": "Europe (London) (eu-west-2)",
+//     "eu-south-1": "Europe (Milan) (eu-south-1)",
+//     "eu-west-3": "Europe (Paris) (eu-west-3)",
+//     "eu-north-1": "Europe (Stockholm) (eu-north-1)",
+//     "sa-east-1": "South America (São Paulo) (sa-east-1)",
+// };
 const TOTAL_PINGS = 10;
 const TOTAL_REGIONS = 18;
 const getRegionFlags = (regionCode) => {
@@ -105,7 +125,7 @@ const PingComponent = () => {
         const awsPingMap = regions.map(region => ({
             codename: region[0],
             name: region[1],
-            url: 'https://' + AWS_REGIONS[region[0]],
+            url: 'https://' + AWS_REGIONS[region[0]] + '/ping',
             pings: [],
             latency: ''
         }))
@@ -132,14 +152,13 @@ const PingComponent = () => {
             addPingResult(index, null);
     }
     const cloudPingTest = async () => {
-        let timer = 0;
         const pingRequests = pingResults.map((region, index) => checkLatency(index));
         return await Promise.allSettled(pingRequests);
     }
     const startPinging = async () => {
         console.log('Ping test =>', pingCount + 1)
         await cloudPingTest();
-        setTimeout(() => setPingCount(pingCount + 1), 5000);
+        setTimeout(() => setPingCount(pingCount + 1), 3000);
     }
     const startPingTest = () => {
         setIsReady(false);
