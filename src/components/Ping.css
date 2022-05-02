@@ -426,6 +426,9 @@ span.c-speedtest-play {
   stroke: rgb(13, 190, 66);
   stroke-width: 6;
   fill-opacity: 0;
+  /* temporary */
+  stroke-dasharray: 1560;
+  stroke-dashoffset: 1560;
 }
 /* it might be editable */
 
@@ -433,11 +436,11 @@ span.c-speedtest-play {
   display: block;
 }
 
-.active{
+/* .active{
   pointer-events: none;
   opacity: 0.7;
   
-}
+} */
 .c-speedtest-lodig.loding-25 {
   stroke-dashoffset: 200;
   transition: 4s;
@@ -446,7 +449,6 @@ span.c-speedtest-play {
   stroke-dashoffset: 150;
   transition: 4s;
 }
-
 .c-speedtest-lodig.loding-75 {
   stroke-dashoffset: 75;
   transition: 4s;
