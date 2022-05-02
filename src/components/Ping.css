@@ -1811,10 +1811,10 @@ hr {
   transition: 3s;
 }
 
-.c-speedtest-lodig-2.loding-25 {
+/* .c-speedtest-lodig-2.loding-25 {
   stroke-dashoffset: 225;
   transition: 1s;
-}
+} */
 
 .active .c-speedtest-lodig-2 {
   display: none;
