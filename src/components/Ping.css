@@ -1648,10 +1648,10 @@ hr {
   transition: 1s;
 }
 
-.c-speedtest-lodig.loding-100 {
+/* .c-speedtest-lodig.loding-100 {
   stroke-dashoffset: 0;
   transition: 2s;
-}
+} */
 
 .c-speedtest-lodig.loding-60 {
   stroke-dashoffset: 85;
