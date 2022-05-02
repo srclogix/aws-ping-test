@@ -2,7 +2,8 @@ import { nanoid } from 'nanoid';
 import { useEffect, useState } from 'react';
 import './Ping.css';
 const ping = require('web-pingjs');
-// Define the regions to check.
+
+
 const AWS_REGIONS = {
     "us-east-1": "dynamodb.us-east-1.amazonaws.com",
     "us-west-1": "dynamodb.us-west-1.amazonaws.com",
@@ -44,28 +45,9 @@ const regionsMap = {
     "eu-north-1": "Europe (Stockholm)",
     "sa-east-1": "South America (São Paulo)",
 };
-// const regionsMap = {
-//     "us-east-1": "US East (N. Virginia) (us-east-1)",
-//     "us-east-2": "US East (Ohio) (us-east-2)",
-//     "us-west-1": "US West (N. California) (us-west-1)",
-//     "us-west-2": "US West (Oregon) (us-west-2)",
-//     "af-south-1": "Africa (Cape Town) (af-south-1)",
-//     "ap-south-1": "Asia Pacific (Mumbai) (ap-south-1)",
-//     "ap-northeast-2": "Asia Pacific (Seoul) (ap-northeast-2)",
-//     "ap-southeast-1": "Asia Pacific (Singapore) (ap-southeast-1)",
-//     "ap-southeast-2": "Asia Pacific (Sydney) (ap-southeast-2)",
-//     "ap-northeast-1": "Asia Pacific (Tokyo) (ap-northeast-1)",
-//     "ca-central-1": "Canada (Central) (ca-central-1)",
-//     "eu-central-1": "Europe (Frankfurt) (eu-central-1)",
-//     "eu-west-1": "Europe (Ireland) (eu-west-1)",
-//     "eu-west-2": "Europe (London) (eu-west-2)",
-//     "eu-south-1": "Europe (Milan) (eu-south-1)",
-//     "eu-west-3": "Europe (Paris) (eu-west-3)",
-//     "eu-north-1": "Europe (Stockholm) (eu-north-1)",
-//     "sa-east-1": "South America (São Paulo) (sa-east-1)",
-// };
 const TOTAL_PINGS = 10;
 const TOTAL_REGIONS = 18;
+
 const getRegionFlags = (regionCode) => {
     switch (regionCode) {
         case "us-east-1":
@@ -105,21 +87,25 @@ const getRegionFlags = (regionCode) => {
             return "";
     }
 }
+
 const getLatencyStyle = (time) => {
     if (!time || time > 700)
         return 'red';
     else if (time >= 500 && time <= 700)
         return 'orange';
 }
+
 const checkAvgLatency = (list) => {
     return Math.round(list.reduce((sum, num) => sum + (num ? num : 0), 0) / list.length);
 }
+
 const PingComponent = () => {
     const [pingResults, setPingResults] = useState();
     const [isReady, setIsReady] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     const [recommendedRegion, setRecommendedRegion] = useState();
     const [pingCount, setPingCount] = useState();
+    
     const initPingRegions = () => {
         const regions = Object.entries(regionsMap);
         const awsPingMap = regions.map(region => ({
@@ -131,6 +117,7 @@ const PingComponent = () => {
         }))
         setPingResults(awsPingMap);
     }
+    
     const addPingResult = (index, time) => {
         const newPingResults = [...pingResults];
         const newRegionMap = newPingResults[index];
@@ -138,6 +125,7 @@ const PingComponent = () => {
         newRegionMap.latency = time ? checkAvgLatency(newRegionMap.pings) : newRegionMap.latency;
         setPingResults(newPingResults);
     }
+    
     const checkLatency = (index) => {
         const { url } = pingResults[index];
         if (url)
@@ -151,15 +139,18 @@ const PingComponent = () => {
         else
             addPingResult(index, null);
     }
+    
     const cloudPingTest = async () => {
         const pingRequests = pingResults.map((region, index) => checkLatency(index));
         return await Promise.allSettled(pingRequests);
     }
+    
     const startPinging = async () => {
         console.log('Ping test =>', pingCount + 1)
         await cloudPingTest();
         setPingCount(pingCount + 1);
     }
+    
     const startPingTest = () => {
         setIsReady(false);
         setIsFinished(false);
@@ -167,19 +158,23 @@ const PingComponent = () => {
         initPingRegions();
         setPingCount(0);
     }
+    
     useEffect(() => {
         startPingTest();
     }, [])
+    
     useEffect(() => {
         if (pingResults?.length === TOTAL_REGIONS)
             setIsReady(true);
         if (pingResults?.every(region => region.pings.length === TOTAL_PINGS))
             setIsFinished(true);
     }, [pingResults])
+    
     useEffect(() => {
         if (isReady && pingCount != TOTAL_PINGS)
             startPinging();
     }, [isReady, pingCount])
+    
     const calculateRecommendRegion = () => {
         const latencies = pingResults.map(region => region.latency).filter(latency => latency);
         const minLatency = Math.min(...latencies);
@@ -187,12 +182,14 @@ const PingComponent = () => {
         setRecommendedRegion(minLatencyIndex);
         return minLatencyIndex;
     }
+    
     useEffect(() => {
         if (isFinished) {
             console.log('Ping result =>', pingResults);
             calculateRecommendRegion();
         }
     }, [isFinished])
+
     return (
         <div className="global_wrapper">
             <a src="/" className="logo" title="Toktown">
@@ -222,9 +219,9 @@ const PingComponent = () => {
                         {/* play button */}
                         <div className="element">
                             <div className="refresh-icon" onClick={() => isFinished && startPingTest()}>
-                                <div className="switch demo1 active"> {/* here edited by me */}
+                                <div className="switch demo1"> {/* here edited by me */}
                                     {/* <img src="images/play.svg" /> here edited by me only src replaced */}
-                                    <div class="c-speedtest-lodig loding-0" id="speedProgress">
+                                    <div class={`c-speedtest-lodig loding-${pingCount * TOTAL_PINGS}`} id="speedProgress">
                                         <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#eee" stroke-width="1" fill-opacity="0"></path><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#0DBE42" stroke-width="6" fill-opacity="0"></path></svg>
                                     </div>
                                     <label></label>
@@ -289,4 +286,5 @@ const PingComponent = () => {
         </div>
     )
 }
+
 export default PingComponent
