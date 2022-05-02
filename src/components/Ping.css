@@ -42,6 +42,7 @@ body {
 .d-flex {
   display: flex;
 }
+
 .d-flex p{
   text-align: left;
 }
@@ -66,7 +67,7 @@ body {
 }
 .region-test .d-flex {
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline !important;
 }
 .refresh-icon {
   cursor: pointer;
