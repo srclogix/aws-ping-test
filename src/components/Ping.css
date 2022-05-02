@@ -79,7 +79,8 @@ body {
 
 .region-test .d-flex {
   justify-content: space-between;
-  align-items: baseline !important;
+  align-items: start;
+  position: relative; 
 }
 
 .refresh-icon {
@@ -437,7 +438,8 @@ span.latency-unavailable {
 
 .switch {
   right: 0;
-  bottom: -11px;
+  top: 0;
+  /* bottom: -11px; */
   position: absolute;
   cursor: pointer;
   transition: 0.5s;
@@ -1628,16 +1630,37 @@ hr {
   stroke: #4285F4;
 }
 
+
+
+.c-speedtest-lodig.loding-10 {
+  stroke-dashoffset: 250;
+  transition: 3s;
+}
+
+.c-speedtest-lodig.loding-20 {
+  stroke-dashoffset: 200;
+  transition: 4s;
+}
+.c-speedtest-lodig.loding-30 {
+  stroke-dashoffset: 180;
+  transition: 4s;
+}
+.c-speedtest-lodig.loding-40 {
+  stroke-dashoffset: 160;
+  transition: 1s;
+}
 .c-speedtest-lodig.loding-50 {
   stroke-dashoffset: 150;
   transition: 4s;
 }
-
+.c-speedtest-lodig.loding-60 {
+  stroke-dashoffset: 85;
+  transition: 1s;
+}
 .c-speedtest-lodig.loding-70 {
   stroke-dashoffset: 75;
   transition: 4s;
 }
-
 .c-speedtest-lodig.loding-80 {
   stroke-dashoffset: 50;
   transition: 1s;
@@ -1647,36 +1670,10 @@ hr {
   stroke-dashoffset: 40;
   transition: 1s;
 }
-
-/* .c-speedtest-lodig.loding-100 {
+.c-speedtest-lodig.loding-100 {
   stroke-dashoffset: 0;
-  transition: 2s;
-} */
-
-.c-speedtest-lodig.loding-60 {
-  stroke-dashoffset: 85;
   transition: 1s;
-}
-
-.c-speedtest-lodig.loding-40 {
-  stroke-dashoffset: 160;
-  transition: 1s;
-}
-
-.c-speedtest-lodig.loding-30 {
-  stroke-dashoffset: 180;
-  transition: 4s;
-}
-
-
-.c-speedtest-lodig.loding-20 {
-  stroke-dashoffset: 200;
-  transition: 4s;
-}
-
-.c-speedtest-lodig.loding-10 {
-  stroke-dashoffset: 250;
-  transition: 3s;
+  visibility: hidden;
 }
 
 .active .c-speedtest-lodig {
@@ -1859,18 +1856,8 @@ hr {
   }
 }
 
-
-
-
-
-
-
 /*# sourceMappingURL=custom.css.map */
 /* tmporary play button ======================================================================= */
-
-
-
-
 
 
 /* ================================================
