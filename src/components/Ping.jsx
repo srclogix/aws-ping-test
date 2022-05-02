@@ -105,7 +105,7 @@ const PingComponent = () => {
     const [isFinished, setIsFinished] = useState(false);
     const [recommendedRegion, setRecommendedRegion] = useState();
     const [pingCount, setPingCount] = useState();
-    
+
     const initPingRegions = () => {
         const regions = Object.entries(regionsMap);
         const awsPingMap = regions.map(region => ({
@@ -117,7 +117,7 @@ const PingComponent = () => {
         }))
         setPingResults(awsPingMap);
     }
-    
+
     const addPingResult = (index, time) => {
         const newPingResults = [...pingResults];
         const newRegionMap = newPingResults[index];
@@ -125,7 +125,7 @@ const PingComponent = () => {
         newRegionMap.latency = time ? checkAvgLatency(newRegionMap.pings) : newRegionMap.latency;
         setPingResults(newPingResults);
     }
-    
+
     const checkLatency = (index) => {
         const { url } = pingResults[index];
         if (url)
@@ -139,18 +139,18 @@ const PingComponent = () => {
         else
             addPingResult(index, null);
     }
-    
+
     const cloudPingTest = async () => {
         const pingRequests = pingResults.map((region, index) => checkLatency(index));
         return await Promise.allSettled(pingRequests);
     }
-    
+
     const startPinging = async () => {
         console.log('Ping test =>', pingCount + 1)
         await cloudPingTest();
         setPingCount(pingCount + 1);
     }
-    
+
     const startPingTest = () => {
         setIsReady(false);
         setIsFinished(false);
@@ -158,23 +158,23 @@ const PingComponent = () => {
         initPingRegions();
         setPingCount(0);
     }
-    
+
     useEffect(() => {
         startPingTest();
     }, [])
-    
+
     useEffect(() => {
         if (pingResults?.length === TOTAL_REGIONS)
             setIsReady(true);
         if (pingResults?.every(region => region.pings.length === TOTAL_PINGS))
             setIsFinished(true);
     }, [pingResults])
-    
+
     useEffect(() => {
         if (isReady && pingCount != TOTAL_PINGS)
             startPinging();
     }, [isReady, pingCount])
-    
+
     const calculateRecommendRegion = () => {
         const latencies = pingResults.map(region => region.latency).filter(latency => latency);
         const minLatency = Math.min(...latencies);
@@ -182,7 +182,7 @@ const PingComponent = () => {
         setRecommendedRegion(minLatencyIndex);
         return minLatencyIndex;
     }
-    
+
     useEffect(() => {
         if (isFinished) {
             console.log('Ping result =>', pingResults);
@@ -205,8 +205,6 @@ const PingComponent = () => {
                 <div className="region-test">
                     <div className="d-flex">
                         <div className="element">
-                            {" "}
-                            {/* <======= it has added 27.04.22*/}
                             <h4 className="header-title">
                                 Media Region Test
                             </h4>
@@ -219,17 +217,16 @@ const PingComponent = () => {
                         {/* play button */}
                         <div className="element">
                             <div className="refresh-icon" onClick={() => isFinished && startPingTest()}>
-                                <div className="switch demo1"> {/* here edited by me */}
-                                    {/* <img src="images/play.svg" /> here edited by me only src replaced */}
-                                    <div class={`c-speedtest-lodig loding-${pingCount * TOTAL_PINGS}`} id="speedProgress">
+                                {/* <div className={`switch demo1 ${(isReady && !isFinished) ? "active" : ""}`}> */}
+                                <div className={`switch demo1 active`}>
+                                    <div className={`c-speedtest-lodig loding-${pingCount * TOTAL_PINGS}`} id="speedProgress">
                                         <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#eee" stroke-width="1" fill-opacity="0"></path><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#0DBE42" stroke-width="6" fill-opacity="0"></path></svg>
                                     </div>
                                     <label></label>
-                                    <span class="c-speedtest-play">
+                                    <span className="c-speedtest-play">
                                         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 163.861 163.861"><path d="M34.857 3.613C20.084-4.861 8.107 2.081 8.107 19.106v125.637c0 17.042 11.977 23.975 26.75 15.509L144.67 97.275c14.778-8.477 14.778-22.211 0-30.686L34.857 3.613z"></path></svg>
                                     </span>
                                 </div>
-                                {/* <span className="tooltiptext">Refresh</span> */}
                             </div>
                         </div>
                     </div>
