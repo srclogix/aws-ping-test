@@ -1806,15 +1806,15 @@ hr {
   transition: 1s;
 }
 
-.c-speedtest-lodig-2.loding-100 {
+/* .c-speedtest-lodig-2.loding-100 {
   stroke-dashoffset: 0;
   transition: 3s;
-}
+} */
 
-/* .c-speedtest-lodig-2.loding-25 {
+.c-speedtest-lodig-2.loding-25 {
   stroke-dashoffset: 225;
   transition: 1s;
-} */
+}
 
 .active .c-speedtest-lodig-2 {
   display: none;
