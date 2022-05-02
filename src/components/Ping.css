@@ -418,6 +418,46 @@ span.c-speedtest-play {
 .c-speedtest-play svg{
   fill: #fe0000;
 }
+/* ================================================
+                    02.04.22 code
+==================================================== */
+/* it might be editable */
+.c-speedtest-lodig path{
+  stroke: rgb(13, 190, 66);
+  stroke-width: 6;
+  fill-opacity: 0;
+}
+/* it might be editable */
+
+.active .c-speedtest-lodig {
+  display: block;
+}
+
+.active{
+  pointer-events: none;
+  opacity: 0.7;
+  
+}
+.c-speedtest-lodig.loding-25 {
+  stroke-dashoffset: 200;
+  transition: 4s;
+}
+.c-speedtest-lodig.loding-50 {
+  stroke-dashoffset: 150;
+  transition: 4s;
+}
+
+.c-speedtest-lodig.loding-75 {
+  stroke-dashoffset: 75;
+  transition: 4s;
+}
+.c-speedtest-lodig.loding-85 {
+  stroke-dashoffset: 50;
+  transition: 1s;
+}
+/* ================================================
+                    02.04.22 code
+==================================================== */
 
 /* ================================================
                     29.04.22 code
