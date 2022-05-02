@@ -219,12 +219,21 @@ const PingComponent = () => {
                                 region.
                             </p>
                         </div>
-                        {/* refresh button */}
+                    
                         {isFinished && (
                             <div className="element">
                                 <div className="refresh-icon" onClick={startPingTest}>
-                                    <img src="images/restore.svg" />
-                                    <span className="tooltiptext">Refresh</span>
+                                    <div className="switch demo1"> {/* here edited by me */}
+                                    {/* <img src="images/play.svg" /> here edited by me only src replaced */}
+                                    <div class="c-speedtest-lodig" id="speedProgress">
+                                        <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#eee" stroke-width="1" fill-opacity="0"></path><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#0DBE42" stroke-width="6" fill-opacity="0"></path></svg>
+                                    </div>
+                                    <label></label>
+                                    <span class="c-speedtest-play">
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 163.861 163.861"><path d="M34.857 3.613C20.084-4.861 8.107 2.081 8.107 19.106v125.637c0 17.042 11.977 23.975 26.75 15.509L144.67 97.275c14.778-8.477 14.778-22.211 0-30.686L34.857 3.613z"></path></svg>
+                                    </span>
+                                    </div>
+                                    {/* <span className="tooltiptext">Refresh</span> */}
                                 </div>
                             </div>
                         )}
