@@ -1931,3 +1931,19 @@ hr {
     height: 15px;
   }
 }
+
+@media(max-width: 404px){
+  .d-flex .header-title {
+    width: 226px;
+}
+}
+@media(max-width: 404px){
+  .d-flex .header-title {
+    width: 226px;
+}
+}
+@media(max-width: 330px){
+  .d-flex .header-title {
+    width: 190px;
+}
+}
