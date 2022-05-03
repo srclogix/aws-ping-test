@@ -70,6 +70,7 @@ body {
   font-weight: normal;
   font-size: 17px;
   color: #000;
+  width: 760px;
   align-items: left;
 }
 
@@ -642,11 +643,22 @@ span.latency-unavailable {
     width: 82px;
   }
 }
+@media(max-width: 855px) {
+  .region-test p {
+    width: 617px;
+}
+}
 
 @media (max-width: 768px) {
   span.latency-unavailable {
     font-size: 27px;
   }
+}
+
+@media(max-width: 700px) {
+  .region-test p {
+    width: 522px;
+}
 }
 
 @media (max-width: 630px) {
@@ -670,6 +682,9 @@ span.latency-unavailable {
     height: 60px;
     padding: 8px 0 13px 0;
   }
+  .region-test p {
+    width: 100%;
+}
 
   .switch.demo1 {
     width: 50px;
