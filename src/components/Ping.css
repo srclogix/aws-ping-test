@@ -70,7 +70,7 @@ body {
   font-weight: normal;
   font-size: 17px;
   color: #000;
-  width: 760px;
+  max-width: 760px;
   align-items: left;
 }
 
@@ -263,7 +263,7 @@ body {
   height: 100%;
   background: #4285F4;
   background-size: 300% 100%;
-  animation: progress-animation 2s linear infinite;
+  animation: progress-animation 3s linear infinite;
   border-radius: 3px;
 
 }
@@ -643,7 +643,7 @@ span.latency-unavailable {
 }
 @media(max-width: 855px) {
   .region-test p {
-    width: 617px;
+    max-width: 617px;
 }
 }
 
@@ -655,7 +655,7 @@ span.latency-unavailable {
 
 @media(max-width: 700px) {
   .region-test p {
-    width: 522px;
+    max-width: 522px;
 }
 }
 
@@ -681,7 +681,7 @@ span.latency-unavailable {
     padding: 8px 0 13px 0;
   }
   .region-test p {
-    width: 100%;
+    /* width: 100%; */
 }
 
   .switch.demo1 {
