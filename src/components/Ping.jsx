@@ -153,13 +153,13 @@ const PingComponent = () => {
 
     const resetTest = () => {
         setIsReady(false);
-        setRecommendedRegion();
         setPingCount(0);
     }
 
     const startPingTest = () => {
         resetTest();
         setIsFinished(false);
+        setRecommendedRegion();
         initPingRegions();
     }
 
