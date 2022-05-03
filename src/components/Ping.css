@@ -611,7 +611,6 @@ span.latency-unavailable {
   display: block;
 }
 
-
 /*# sourceMappingURL=custom.css.map */
 /* tmporary play button ======================================================================= */
 
@@ -629,7 +628,6 @@ span.latency-unavailable {
     width: 150px;
   }
 }
-
 @media (max-width: 1045px) {
   .row {
     margin: 0;
@@ -685,7 +683,7 @@ span.latency-unavailable {
     padding: 8px 0 13px 0;
   }
   .region-test p {
-    /* width: 100%; */
+    width: 100%;
 }
 
   .switch.demo1 {
