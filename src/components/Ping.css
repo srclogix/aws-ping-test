@@ -70,7 +70,7 @@ body {
   font-weight: normal;
   font-size: 17px;
   color: #000;
-  max-width: 760px;
+  max-width: 900px;
   align-items: left;
 }
 
@@ -150,7 +150,7 @@ body {
   text-align: center;
   position: relative;
   margin-bottom: 20px;
-  transition: 0.5s;
+  transition: all 1s;
 }
 
 .gray-border:hover,
@@ -547,7 +547,7 @@ span.latency-unavailable {
   height: 68px;
   top: 0;
   left: 0;
-  transition: 1s;
+  /* transition: 1s; */
   stroke-dasharray: 300, 300;
   stroke-dashoffset: 300;
   display: none;
@@ -635,7 +635,11 @@ span.latency-unavailable {
     margin: 0;
   }
 }
-
+@media(max-width: 960px) {
+  .region-test p {
+    max-width: 760px;
+}
+}
 @media(max-width: 900px) {
   .recomend img {
     width: 82px;
