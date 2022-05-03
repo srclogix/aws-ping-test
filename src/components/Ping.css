@@ -70,7 +70,7 @@ body {
   font-weight: normal;
   font-size: 17px;
   color: #000;
-  width: 760px;
+  max-width: 900px;
   align-items: left;
 }
 
@@ -150,7 +150,7 @@ body {
   text-align: center;
   position: relative;
   margin-bottom: 20px;
-  transition: 0.5s;
+  transition: all 1s;
 }
 
 .gray-border:hover,
@@ -263,7 +263,7 @@ body {
   height: 100%;
   background: #4285F4;
   background-size: 300% 100%;
-  animation: progress-animation 2s linear infinite;
+  animation: progress-animation 3s linear infinite;
   border-radius: 3px;
 
 }
@@ -547,7 +547,7 @@ span.latency-unavailable {
   height: 68px;
   top: 0;
   left: 0;
-  transition: 1s;
+  /* transition: 1s; */
   stroke-dasharray: 300, 300;
   stroke-dashoffset: 300;
   display: none;
@@ -611,7 +611,6 @@ span.latency-unavailable {
   display: block;
 }
 
-
 /*# sourceMappingURL=custom.css.map */
 /* tmporary play button ======================================================================= */
 
@@ -629,13 +628,16 @@ span.latency-unavailable {
     width: 150px;
   }
 }
-
 @media (max-width: 1045px) {
   .row {
     margin: 0;
   }
 }
-
+/* @media(max-width: 960px) {
+  .region-test p {
+    max-width: 760px;
+}
+} */
 @media(max-width: 900px) {
   .recomend img {
     width: 82px;
@@ -643,7 +645,7 @@ span.latency-unavailable {
 }
 @media(max-width: 855px) {
   .region-test p {
-    width: 617px;
+    max-width: 617px;
 }
 }
 
@@ -655,7 +657,7 @@ span.latency-unavailable {
 
 @media(max-width: 700px) {
   .region-test p {
-    width: 522px;
+    max-width: 522px;
 }
 }
 
@@ -692,7 +694,6 @@ span.latency-unavailable {
   .c-speedtest-lodig {
     width: 59px;
     height: 68px;
-
   }
 
   span.c-speedtest-play {
