@@ -557,16 +557,16 @@ span.latency-unavailable {
 }
 .c-speedtest-lodig.loding-10 {
   stroke-dashoffset: 250;
-  transition: 3s;
+  transition: 1s;
 }
 
 .c-speedtest-lodig.loding-20 {
   stroke-dashoffset: 200;
-  transition: 4s;
+  transition: 1s;
 }
 .c-speedtest-lodig.loding-30 {
   stroke-dashoffset: 180;
-  transition: 4s;
+  transition: 1s;
 }
 .c-speedtest-lodig.loding-40 {
   stroke-dashoffset: 160;
@@ -574,7 +574,7 @@ span.latency-unavailable {
 }
 .c-speedtest-lodig.loding-50 {
   stroke-dashoffset: 150;
-  transition: 4s;
+  transition: 1s;
 }
 .c-speedtest-lodig.loding-60 {
   stroke-dashoffset: 85;
@@ -582,7 +582,7 @@ span.latency-unavailable {
 }
 .c-speedtest-lodig.loding-70 {
   stroke-dashoffset: 75;
-  transition: 4s;
+  transition: 1s;
 }
 .c-speedtest-lodig.loding-80 {
   stroke-dashoffset: 50;
