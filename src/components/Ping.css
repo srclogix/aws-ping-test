@@ -555,6 +555,15 @@ span.latency-unavailable {
 .c-speedtest-lodig path {
   stroke: #4285F4;
 }
+
+/* recent changes */
+.c-speedtest-lodig.loding-0 {
+  stroke-dashoffset: 300;
+  transition: 1s;
+  visibility: hidden;
+}  
+/* recent changes */
+
 .c-speedtest-lodig.loding-10 {
   stroke-dashoffset: 250;
   transition: 3s;
@@ -602,15 +611,6 @@ span.latency-unavailable {
 .active .c-speedtest-lodig {
   display: block;
 }
-
-
-
-
-
-
-
-
-
 
 
 /*# sourceMappingURL=custom.css.map */

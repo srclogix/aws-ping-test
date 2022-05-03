@@ -217,7 +217,6 @@ const PingComponent = () => {
                         {/* play button */}
                         <div className="element">
                             <div className="refresh-icon" onClick={() => isFinished && startPingTest()}>
-                                {/* <div className={`switch demo1 ${(isReady && !isFinished) ? "active" : ""}`}> */}
                                 <div className={`switch demo1 active`}>
                                     <div className={`c-speedtest-lodig loding-${pingCount * TOTAL_PINGS}`} id="speedProgress">
                                         <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#eee" stroke-width="1" fill-opacity="0"></path><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#0DBE42" stroke-width="6" fill-opacity="0"></path>
@@ -231,6 +230,15 @@ const PingComponent = () => {
                                 </div>
                             </div>
                         </div>
+
+
+{/* ========================== just demo ============================== */}
+
+
+{/* ========================== just demo ============================== */}
+
+
+
                     </div>
                     <div className="row m-t-20">
                         {pingResults?.map((region, index) => (
