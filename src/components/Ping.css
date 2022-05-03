@@ -633,11 +633,11 @@ span.latency-unavailable {
     margin: 0;
   }
 }
-@media(max-width: 960px) {
+/* @media(max-width: 960px) {
   .region-test p {
     max-width: 760px;
 }
-}
+} */
 @media(max-width: 900px) {
   .recomend img {
     width: 82px;
@@ -694,7 +694,6 @@ span.latency-unavailable {
   .c-speedtest-lodig {
     width: 59px;
     height: 68px;
-
   }
 
   span.c-speedtest-play {
