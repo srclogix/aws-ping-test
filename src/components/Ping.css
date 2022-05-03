@@ -557,11 +557,11 @@ span.latency-unavailable {
 }
 
 /* recent changes */
-.c-speedtest-lodig.loding-0 {
+/* .c-speedtest-lodig.loding-0 {
   stroke-dashoffset: 300;
   transition: 1s;
   visibility: hidden;
-}  
+}   */
 /* recent changes */
 
 .c-speedtest-lodig.loding-10 {
