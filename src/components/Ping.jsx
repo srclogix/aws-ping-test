@@ -207,14 +207,14 @@ const PingComponent = () => {
         const regions = [...pingResults];
         const sortedRegions = regions.sort((a, b) => a.latency - b.latency);
 
-        setPingResults(sortedRegions);
+        // setPingResults(sortedRegions);
         setIsSorted(true);
     }
 
     useEffect(() => {
         if (isFinished) {
             console.log('Ping result =>', pingResults);
-            // sortRegions();
+            sortRegions();
             setTimeout(resetTest, 100);
         }
     }, [isFinished])
