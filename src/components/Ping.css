@@ -81,7 +81,7 @@ body {
 .region-test .d-flex {
   justify-content: space-between;
   align-items: start;
-  position: relative; 
+  position: relative;
 }
 
 .refresh-icon {
@@ -540,9 +540,11 @@ span.latency-unavailable {
   width: 100px;
   height: 100px;
 }
+
 .off-result .c-speedtest-play {
   display: none;
 }
+
 .c-speedtest-lodig {
   position: absolute;
   width: 68px;
@@ -552,7 +554,7 @@ span.latency-unavailable {
   /* transition: 1s; */
   stroke-dasharray: 300, 300;
   stroke-dashoffset: 300;
-  /* transition: stroke-dashoffset 1s; */
+  transition: stroke-dashoffset .1s;
   display: none;
 }
 
@@ -564,30 +566,37 @@ span.latency-unavailable {
   stroke-dashoffset: 270;
   transition: stroke-dashoffset 1s;
 }
+
 .c-speedtest-lodig.loding-20 {
   stroke-dashoffset: 230;
   transition: stroke-dashoffset 1s;
 }
+
 .c-speedtest-lodig.loding-30 {
   stroke-dashoffset: 190;
   transition: stroke-dashoffset 1s;
 }
+
 .c-speedtest-lodig.loding-40 {
   stroke-dashoffset: 150;
   transition: stroke-dashoffset 1s;
 }
+
 .c-speedtest-lodig.loding-50 {
   stroke-dashoffset: 120;
   transition: stroke-dashoffset 1s;
 }
+
 .c-speedtest-lodig.loding-60 {
   stroke-dashoffset: 90;
   transition: stroke-dashoffset 1s;
 }
+
 .c-speedtest-lodig.loding-70 {
   stroke-dashoffset: 60;
   transition: stroke-dashoffset 1s;
 }
+
 .c-speedtest-lodig.loding-80 {
   stroke-dashoffset: 30;
   transition: stroke-dashoffset 1s;
@@ -626,11 +635,13 @@ span.latency-unavailable {
     width: 150px;
   }
 }
+
 @media (max-width: 1045px) {
   .row {
     margin: 0;
   }
 }
+
 /* @media(max-width: 960px) {
   .region-test p {
     max-width: 760px;
@@ -641,10 +652,11 @@ span.latency-unavailable {
     width: 82px;
   }
 }
+
 @media(max-width: 855px) {
   .region-test p {
     max-width: 617px;
-}
+  }
 }
 
 @media (max-width: 768px) {
@@ -656,7 +668,7 @@ span.latency-unavailable {
 @media(max-width: 700px) {
   .region-test p {
     max-width: 522px;
-}
+  }
 }
 
 @media (max-width: 630px) {
@@ -680,9 +692,10 @@ span.latency-unavailable {
     height: 60px;
     padding: 8px 0 13px 0;
   }
+
   .region-test p {
     width: 100%;
-}
+  }
 
   .switch.demo1 {
     width: 50px;
@@ -701,18 +714,20 @@ span.latency-unavailable {
   }
 }
 
-@media(max-width: 404px){
+@media(max-width: 404px) {
   .d-flex .header-title {
     width: 226px;
+  }
 }
-}
-@media(max-width: 404px){
+
+@media(max-width: 404px) {
   .d-flex .header-title {
     width: 226px;
+  }
 }
-}
-@media(max-width: 330px){
+
+@media(max-width: 330px) {
   .d-flex .header-title {
     width: 190px;
-}
+  }
 }
