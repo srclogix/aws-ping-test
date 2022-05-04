@@ -45,7 +45,7 @@ const regionsMap = {
     "eu-north-1": "Europe (Stockholm)",
     "sa-east-1": "South America (São Paulo)",
 };
-const TOTAL_PINGS = 10;
+const TOTAL_PINGS = 15;
 const TOTAL_REGIONS = 18;
 
 const getRegionFlags = (regionCode) => {
@@ -99,12 +99,27 @@ const checkAvgLatency = (list) => {
     return Math.round(list.reduce((sum, num) => sum + (num ? num : 0), 0) / list.length);
 }
 
+const calculateProgress = (pingCount) => {
+    return pingCount * (100 / TOTAL_PINGS)
+}
+
+const calculateOffset = (pingCount) => {
+    const progress = calculateProgress(pingCount);
+    const strokeWidth = 6;
+    const radius = (100 / 2) - (strokeWidth * 2);
+    const circumference = radius * 2 * Math.PI;
+    const offset = circumference - progress / 100 * circumference;
+
+    return offset;
+}
+
 const PingComponent = () => {
     const [pingResults, setPingResults] = useState();
     const [isReady, setIsReady] = useState(false);
     const [isFinished, setIsFinished] = useState(false);
     const [recommendedRegion, setRecommendedRegion] = useState();
     const [pingCount, setPingCount] = useState();
+    const [isSorted, setIsSorted] = useState(false);
 
     const initPingRegions = () => {
         const regions = Object.entries(regionsMap);
@@ -154,6 +169,7 @@ const PingComponent = () => {
     const resetTest = () => {
         setIsReady(false);
         setPingCount(0);
+        setIsSorted(false);
     }
 
     const startPingTest = () => {
@@ -187,13 +203,26 @@ const PingComponent = () => {
         return minLatencyIndex;
     }
 
+    const sortRegions = () => {
+        const regions = [...pingResults];
+        const sortedRegions = regions.sort((a, b) => a.latency - b.latency);
+
+        // setPingResults(sortedRegions);
+        setIsSorted(true);
+    }
+
     useEffect(() => {
         if (isFinished) {
             console.log('Ping result =>', pingResults);
-            calculateRecommendRegion();
-            setTimeout(resetTest, 1000);
+            sortRegions();
+            setTimeout(resetTest, 100);
         }
     }, [isFinished])
+
+    useEffect(() => {
+        if (isSorted)
+            calculateRecommendRegion();
+    }, [isSorted])
 
     return (
         <div className="global_wrapper">
@@ -211,20 +240,19 @@ const PingComponent = () => {
                     <div className="d-flex">
                         <div className="element">
                             <h4 className="header-title">
-                                Media Region Test
+                                AWS Media Region Test
                             </h4>
                             <p>
-                                Latency ping test tool. Tests across various AWS Media Regions
-                                across the globe. Help user pick the most optimal media
-                                region.
+                                Test performance of various AWS media regions across the world.
+                                Lower latency is better for video calls.
+                                Best regions are sorted on the top with our recommended region.
                             </p>
                         </div>
                         {/* play button */}
                         <div className="element">
                             <div className="refresh-icon" onClick={() => isFinished && startPingTest()}>
                                 <div className={`switch demo1 ${(isReady) ? "active" : ""}`}>
-                                {/* <div className={`switch demo1 active`}> */}
-                                    <div className={`c-speedtest-lodig loding-${pingCount * TOTAL_PINGS}`} id="speedProgress">
+                                    <div className={`c-speedtest-lodig`} id="speedProgress" style={{ strokeDashoffset: calculateOffset(pingCount) }}>
                                         <svg viewBox="0 0 100 100"><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#eee" stroke-width="1" fill-opacity="0"></path><path d="M 50,50 m 0,-47 a 47,47 0 1 1 0,94 a 47,47 0 1 1 0,-94" stroke="#0DBE42" stroke-width="6" fill-opacity="0"></path>
                                         </svg>
                                     </div>
@@ -268,7 +296,7 @@ const PingComponent = () => {
                                                 <span
                                                     className="progress-bar"
                                                     style={{
-                                                        width: `${region.pings.length * TOTAL_PINGS}%`,
+                                                        width: `${calculateProgress(region.pings.length)}%`,
                                                     }}
                                                 />
                                             </div>
