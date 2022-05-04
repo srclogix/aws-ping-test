@@ -560,45 +560,46 @@ span.latency-unavailable {
 
 .c-speedtest-lodig.loding-10 {
   stroke-dashoffset: 270;
-  /* transition: stroke-dashoffset 1s; */
+  transition: stroke-dashoffset 1s;
 }
 .c-speedtest-lodig.loding-20 {
-  stroke-dashoffset: 250;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 230;
+  transition: stroke-dashoffset 1s;
 }
 .c-speedtest-lodig.loding-30 {
-  stroke-dashoffset: 220;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 190;
+  transition: stroke-dashoffset 1s;
 }
 .c-speedtest-lodig.loding-40 {
-  stroke-dashoffset: 190;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 150;
+  transition: stroke-dashoffset 1s;
 }
 .c-speedtest-lodig.loding-50 {
-  stroke-dashoffset: 160;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 120;
+  transition: stroke-dashoffset 1s;
 }
 .c-speedtest-lodig.loding-60 {
-  stroke-dashoffset: 130;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 90;
+  transition: stroke-dashoffset 1s;
 }
 .c-speedtest-lodig.loding-70 {
-  stroke-dashoffset: 100;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 60;
+  transition: stroke-dashoffset 1s;
 }
 .c-speedtest-lodig.loding-80 {
-  stroke-dashoffset: 70;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 30;
+  transition: stroke-dashoffset 1s;
 }
 
 .c-speedtest-lodig.loding-90 {
-  stroke-dashoffset: 40;
-  /* transition: stroke-dashoffset 1s; */
+  stroke-dashoffset: 10;
+  transition: stroke-dashoffset 1s;
   /* visibility: hidden; */
 }
 
 .c-speedtest-lodig.loding-100 {
-  stroke-dashoffset: 10;
+  stroke-dashoffset: 0;
+  transition: stroke-dashoffset 1s;
   visibility: hidden;
 }
 
