@@ -45,7 +45,7 @@ const regionsMap = {
     "eu-north-1": "Europe (Stockholm)",
     "sa-east-1": "South America (São Paulo)",
 };
-const TOTAL_PINGS = 10;
+const TOTAL_PINGS = 15;
 const TOTAL_REGIONS = 18;
 
 const getRegionFlags = (regionCode) => {
