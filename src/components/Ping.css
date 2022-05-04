@@ -263,7 +263,7 @@ body {
   height: 100%;
   background: #4285F4;
   background-size: 300% 100%;
-  animation: progress-animation 3s linear infinite;
+  animation: progress-animation 2s linear infinite;
   border-radius: 3px;
 
 }
@@ -550,6 +550,7 @@ span.latency-unavailable {
   /* transition: 1s; */
   stroke-dasharray: 300, 300;
   stroke-dashoffset: 300;
+  /* transition: stroke-dashoffset 1s; */
   display: none;
 }
 
@@ -557,53 +558,47 @@ span.latency-unavailable {
   stroke: #4285F4;
 }
 
-.c-speedtest-lodig.loding-5 {
-  stroke-dashoffset: 280;
-  transition: 1s;
-}  
-
 .c-speedtest-lodig.loding-10 {
-  stroke-dashoffset: 200;
-  transition: 1s;
+  stroke-dashoffset: 270;
+  /* transition: stroke-dashoffset 1s; */
 }
-
 .c-speedtest-lodig.loding-20 {
-  stroke-dashoffset: 200;
-  transition: 1s;
+  stroke-dashoffset: 250;
+  /* transition: stroke-dashoffset 1s; */
 }
 .c-speedtest-lodig.loding-30 {
-  stroke-dashoffset: 180;
-  transition: 1s;
+  stroke-dashoffset: 220;
+  /* transition: stroke-dashoffset 1s; */
 }
 .c-speedtest-lodig.loding-40 {
-  stroke-dashoffset: 160;
-  transition: 1s;
+  stroke-dashoffset: 190;
+  /* transition: stroke-dashoffset 1s; */
 }
 .c-speedtest-lodig.loding-50 {
-  stroke-dashoffset: 150;
-  transition: 1s;
+  stroke-dashoffset: 160;
+  /* transition: stroke-dashoffset 1s; */
 }
 .c-speedtest-lodig.loding-60 {
-  stroke-dashoffset: 85;
-  transition: 1s;
+  stroke-dashoffset: 130;
+  /* transition: stroke-dashoffset 1s; */
 }
 .c-speedtest-lodig.loding-70 {
-  stroke-dashoffset: 75;
-  transition: 1s;
+  stroke-dashoffset: 100;
+  /* transition: stroke-dashoffset 1s; */
 }
 .c-speedtest-lodig.loding-80 {
-  stroke-dashoffset: 50;
-  transition: 1s;
+  stroke-dashoffset: 70;
+  /* transition: stroke-dashoffset 1s; */
 }
 
 .c-speedtest-lodig.loding-90 {
-  stroke-dashoffset: 30;
-  transition: 1s;
-  visibility: hidden;
+  stroke-dashoffset: 40;
+  /* transition: stroke-dashoffset 1s; */
+  /* visibility: hidden; */
 }
 
 .c-speedtest-lodig.loding-100 {
-  stroke-dashoffset: 0;
+  stroke-dashoffset: 10;
   visibility: hidden;
 }
 
