@@ -244,7 +244,7 @@ const PingComponent = () => {
                             </h4>
                             <p>
                                 Test performance of various AWS media regions across the world.
-                                Lower latency is better for video calls.
+                                Lower latency is better for video calls.<br />
                                 Best regions are sorted on the top with our recommended region.
                             </p>
                         </div>
