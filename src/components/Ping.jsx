@@ -207,7 +207,7 @@ const PingComponent = () => {
         const regions = [...pingResults];
         const sortedRegions = regions.sort((a, b) => a.latency - b.latency);
 
-        // setPingResults(sortedRegions);
+        setPingResults(sortedRegions);
         setIsSorted(true);
     }
 
