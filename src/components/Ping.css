@@ -721,6 +721,10 @@ span.latency-unavailable {
     max-width: 295px;
     font-size: 26px;
   }
+
+  .switch {
+    top: -10px;
+  }
 }
 
 @media (max-width: 404px) {
