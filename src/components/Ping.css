@@ -434,11 +434,11 @@ span.latency-unavailable {
                     29.04.22 code
 ==================================================== */
 .switch {
-  right: 0;
-  top: 0;
-  position: absolute;
   cursor: pointer;
-  transition: 0.5s;
+  position: absolute;
+  right: 0;
+  top: -7px;
+  transition: .5s;
 }
 
 .switch:hover {
@@ -730,8 +730,18 @@ span.latency-unavailable {
   }
 }
 
-@media(max-width: 330px) {
+@media(max-width: 345px) {
+  .switch {
+    cursor: pointer;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: .5s;
+  }
+}
+
+@media(max-width: 346px) {
   .d-flex .header-title {
-    width: 190px;
+    max-width: 179px;
   }
 }
